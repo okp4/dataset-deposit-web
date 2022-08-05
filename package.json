@@ -1,0 +1,45 @@
+{
+    "name": "@okp4/dataset-deposit-web",
+    "version": "0.1.0",
+    "private": true,
+    "repository": "git@github.com:okp4/dataset-deposit-web.git",
+    "license": "BSD-3-Clause",
+    "description": "Dataset deposit web app for the ØKP4 network.",
+    "homepage": "https://github.com/okp4/dataset-deposit-web",
+    "author": {
+      "name": "OKP4",
+      "web": "https://okp4.network"
+    },
+    "engines": {
+      "node": "^16.14.0",
+      "yarn": "~1.22.17"
+    },
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "next": "12.2.2",
+      "react": "18.2.0",
+      "react-dom": "18.1.0"
+    },
+   "devDependencies": {
+    "@okp4/eslint-config": "^1.1.0",
+    "@okp4/ui": "^1.9.0",
+    "@types/node": "18.0.6",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "eslint": "8.20.0",
+    "eslint-config-next": "12.2.2",
+    "eslint-plugin-functional": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.53.0",
+    "typescript": "4.7.4"
+  }
+  }
+  
