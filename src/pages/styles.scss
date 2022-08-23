@@ -27,6 +27,17 @@ body {
       background-repeat: no-repeat;
       align-items: center;
 
+      .okp4-dataset-stepper-container {
+        display: flex;
+        flex-direction: column;
+        height: 550px;
+        margin: 0 15px;
+        .okp4-dataset-upload-step {
+          display: grid;
+          justify-content: center;
+        }
+      }
+
       .okp4-brand-link {
         text-decoration: unset;
         color: inherit;

@@ -11,6 +11,7 @@ import type { ThemeContextType, UseTranslationResponse } from '@okp4/ui'
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import { translationsToLoad } from '../../i18n/index'
+import { DatasetStepper } from '../datasetStepper/DatasetStepper'
 
 const languages = [
   {
@@ -54,7 +55,12 @@ export const Content = (): JSX.Element => {
       style={{ backgroundImage: `url(${themedImage})` }}
     >
       <Header firstElement={<Logo size="small" />} />
-      <div></div>
+      <div className="okp4-dataset-stepper-container">
+        <Typography as="h1" fontWeight="bold">
+          Dataset deposit
+        </Typography>
+        <DatasetStepper />
+      </div>
       <Footer languages={languages} lastElement={<Okp4Link />} />
     </div>
   )
