@@ -1,10 +1,12 @@
 import { List } from 'immutable'
 import {
   createEventBusInstance,
-  FileStoreBuilder,
   FileContext,
+  FileStoreBuilder,
   ErrorStoreBuilder,
-  ErrorContext
+  ErrorContext,
+  TaskContext,
+  TaskStoreBuilder
 } from '@okp4/ui'
 import type { StoreParameter } from '@okp4/ui'
 
@@ -20,5 +22,9 @@ export const storeParameters = (): List<StoreParameter> => {
   const errorStore = new ErrorStoreBuilder().withEventBus(eventBusInstance).build()
   const errorStoreParameter: StoreParameter = [ErrorContext, errorStore]
 
-  return List([fileStoreParameter, errorStoreParameter])
+  // Task
+  const taskStore = new TaskStoreBuilder().withEventBus(eventBusInstance).build()
+  const taskStoreParameter: StoreParameter = [TaskContext, taskStore]
+
+  return List([fileStoreParameter, errorStoreParameter, taskStoreParameter])
 }
