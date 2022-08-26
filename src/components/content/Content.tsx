@@ -60,15 +60,17 @@ export const Content = (): JSX.Element => {
     >
       <Header firstElement={<Logo size="small" />} />
       <div className="okp4-dataset-stepper-container">
-        <Typography as="h1" fontWeight="bold">
-          {t('stepper:dataset-deposit')}
-        </Typography>
-        <div>
-          <Typography as="h2" fontSize="small">
-            {t('stepper:dataset-description')}
+        <div className="okp4-dataset-stepper-main">
+          <Typography as="h1" fontWeight="bold">
+            {t('stepper:dataset-deposit')}
           </Typography>
+          <div className="okp4-dataset-stepper-description">
+            <Typography as="h2" fontSize="small">
+              {t('stepper:dataset-description')}
+            </Typography>
+          </div>
+          <DatasetStepper />
         </div>
-        <DatasetStepper />
       </div>
       <Footer languages={languages} lastElement={<Okp4Link linkText={footerLinkText} />} />
     </div>
