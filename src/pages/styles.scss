@@ -30,8 +30,18 @@ body {
       .okp4-dataset-stepper-container {
         display: flex;
         flex-direction: column;
-        height: 550px;
+        height: 700px;
         margin: 0 15px;
+
+        @media screen and (max-width: 768px) {
+          height: 650px;
+        }
+        @media screen and (max-width: 480px) {
+          height: 550px;
+        }
+        @media screen and (max-width: 380px) {
+          height: 500px;
+        }
         .okp4-dataset-upload-step {
           display: grid;
           justify-content: center;
