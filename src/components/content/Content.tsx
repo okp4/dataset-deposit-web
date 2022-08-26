@@ -13,6 +13,10 @@ import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import { translationsToLoad } from '../../i18n/index'
 import { DatasetStepper } from '../datasetStepper/DatasetStepper'
 
+type FooterLinkProps = {
+  readonly linkText: string
+}
+
 const languages = [
   {
     name: 'English',
@@ -24,12 +28,10 @@ const languages = [
   }
 ]
 
-const Okp4Link = (): JSX.Element => {
-  const { t }: UseTranslationResponse = useTranslation()
-
+const Okp4Link = ({ linkText }: FooterLinkProps): JSX.Element => {
   return (
     <Typography as="p" color="highlighted-text" fontSize="x-small" fontWeight="xlight" noWrap>
-      {`${t('footer:brand-link')} `}
+      {`${linkText} `}
       <Typography color="highlighted-text" fontSize="x-small" fontWeight="bold">
         <a
           className="okp4-brand-link"
@@ -46,8 +48,10 @@ const Okp4Link = (): JSX.Element => {
 
 export const Content = (): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
+  const { t }: UseTranslationResponse = useTranslation()
   const themedImage = theme === 'light' ? lightCosmos.src : darkCosmos.src
   loadTranslations(translationsToLoad)
+  const footerLinkText = t('footer:brand-link')
 
   return (
     <div
@@ -57,11 +61,16 @@ export const Content = (): JSX.Element => {
       <Header firstElement={<Logo size="small" />} />
       <div className="okp4-dataset-stepper-container">
         <Typography as="h1" fontWeight="bold">
-          Dataset deposit
+          {t('stepper:dataset-deposit')}
         </Typography>
+        <div>
+          <Typography as="h2" fontSize="small">
+            {t('stepper:dataset-description')}
+          </Typography>
+        </div>
         <DatasetStepper />
       </div>
-      <Footer languages={languages} lastElement={<Okp4Link />} />
+      <Footer languages={languages} lastElement={<Okp4Link linkText={footerLinkText} />} />
     </div>
   )
 }
