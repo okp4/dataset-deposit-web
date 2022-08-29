@@ -1,7 +1,7 @@
-import { Stepper, useTranslation } from '@okp4/ui'
+import { Stepper as DatasetStepper, useTranslation } from '@okp4/ui'
 import type { Step, UseTranslationResponse } from '@okp4/ui'
 
-export const DatasetStepper = (): JSX.Element => {
+export const Stepper = (): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
 
   const steps: Step[] = [
@@ -23,5 +23,5 @@ export const DatasetStepper = (): JSX.Element => {
     }
   ]
 
-  return <Stepper steps={steps} />
+  return <DatasetStepper steps={steps} />
 }

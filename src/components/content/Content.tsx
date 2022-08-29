@@ -11,7 +11,7 @@ import type { ThemeContextType, UseTranslationResponse } from '@okp4/ui'
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import { translationsToLoad } from '../../i18n/index'
-import { DatasetStepper } from '../datasetStepper/DatasetStepper'
+import { Stepper } from '../stepper/Stepper'
 
 type FooterLinkProps = {
   readonly linkText: string
@@ -69,7 +69,7 @@ export const Content = (): JSX.Element => {
               {t('stepper:dataset-description')}
             </Typography>
           </div>
-          <DatasetStepper />
+          <Stepper />
         </div>
       </div>
       <Footer languages={languages} lastElement={<Okp4Link linkText={footerLinkText} />} />
