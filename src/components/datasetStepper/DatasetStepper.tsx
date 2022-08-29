@@ -2,23 +2,23 @@ import { Stepper, useTranslation } from '@okp4/ui'
 import type { Step, UseTranslationResponse } from '@okp4/ui'
 
 export const DatasetStepper = (): JSX.Element => {
-  const { t }: UseTranslationResponse = useTranslation('stepper')
+  const { t }: UseTranslationResponse = useTranslation()
 
   const steps: Step[] = [
     {
-      label: t('upload'),
+      label: t('stepper:upload'),
       status: 'active'
     },
     {
-      label: t('metadata'),
+      label: t('stepper:metadata'),
       status: 'disabled'
     },
     {
-      label: t('summary'),
+      label: t('stepper:summary'),
       status: 'disabled'
     },
     {
-      label: t('confirmation'),
+      label: t('stepper:confirmation'),
       status: 'disabled'
     }
   ]
