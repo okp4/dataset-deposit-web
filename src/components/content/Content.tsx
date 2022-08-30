@@ -14,7 +14,7 @@ import { translationsToLoad } from '../../i18n/index'
 import { Stepper } from '../stepper/Stepper'
 
 type FooterLinkProps = {
-  readonly linkText: string
+  readonly label: string
 }
 
 const languages = [
@@ -28,10 +28,10 @@ const languages = [
   }
 ]
 
-const Okp4Link = ({ linkText }: FooterLinkProps): JSX.Element => {
+const Okp4Link = ({ label }: FooterLinkProps): JSX.Element => {
   return (
     <Typography as="p" color="highlighted-text" fontSize="x-small" fontWeight="xlight" noWrap>
-      {`${linkText} `}
+      {`${label} `}
       <Typography color="highlighted-text" fontSize="x-small" fontWeight="bold">
         <a
           className="okp4-brand-link"
@@ -50,8 +50,7 @@ export const Content = (): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
   const { t }: UseTranslationResponse = useTranslation()
   const themedImage = theme === 'light' ? lightCosmos.src : darkCosmos.src
-  loadTranslations(translationsToLoad)
-  const footerLinkText = t('footer:brand-link')
+  const footerLabel = t('footer:brand-link')
 
   return (
     <div
@@ -72,7 +71,7 @@ export const Content = (): JSX.Element => {
           <Stepper />
         </div>
       </div>
-      <Footer languages={languages} lastElement={<Okp4Link linkText={footerLinkText} />} />
+      <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>
   )
 }
