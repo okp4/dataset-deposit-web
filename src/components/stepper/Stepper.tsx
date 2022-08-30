@@ -6,8 +6,12 @@ export const Stepper = (): JSX.Element => {
 
   const steps: Step[] = [
     {
-      label: t('stepper:upload'),
+      label: t('stepper:dataspace'),
       status: 'active'
+    },
+    {
+      label: t('stepper:upload'),
+      status: 'disabled'
     },
     {
       label: t('stepper:metadata'),
