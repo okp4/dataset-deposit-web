@@ -1,6 +1,6 @@
 import { Select, Typography, useTranslation } from '@okp4/ui'
 import type { SelectOption, SelectValue, UseState, UseTranslationResponse } from '@okp4/ui'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 type DataSpaceStepProps = {
   readonly hasError: boolean
@@ -8,6 +8,7 @@ type DataSpaceStepProps = {
   readonly onDataSpaceChange: (selectedDataSpace: SelectValue) => void
 }
 
+// eslint-disable-next-line max-lines-per-function
 export const DataSpaceStep = ({
   onDataSpaceChange,
   hasError,
@@ -17,9 +18,16 @@ export const DataSpaceStep = ({
   const { t }: UseTranslationResponse = useTranslation()
 
   const isInvalidStep = hasError && !dataSpace
-  const options: SelectOption[] = [
-    { label: 'Rhizome', value: 'Rhizome', group: t('stepper:dataspace:public') }
-  ]
+  const options: SelectOption[] = useMemo(
+    () => [
+      {
+        label: 'Rhizome',
+        value: 'Rhizome',
+        group: t('stepper:dataset-deposit:steps:dataspace:public')
+      }
+    ],
+    [t]
+  )
 
   const handleDataSpaceSelection = useCallback(
     (value: SelectValue): void => {
