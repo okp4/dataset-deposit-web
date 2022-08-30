@@ -1,17 +1,9 @@
-import {
-  Footer,
-  Header,
-  loadTranslations,
-  Typography,
-  useTheme,
-  useTranslation,
-  Logo
-} from '@okp4/ui'
+import { Footer, Header, Typography, useTheme, useTranslation, Logo } from '@okp4/ui'
 import type { ThemeContextType, UseTranslationResponse } from '@okp4/ui'
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
-import { translationsToLoad } from '../../i18n/index'
 import { Stepper } from '../stepper/Stepper'
+import '../../i18n/index'
 
 type FooterLinkProps = {
   readonly label: string
