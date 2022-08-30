@@ -74,6 +74,27 @@ body {
               margin-bottom: 0;
             }
           }
+
+          .okp4-dataspace-step-main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .okp4-dataspace-step-description {
+              white-space: pre-line;
+            }
+
+            .okp4-dataspace-select-container {
+              align-self: center;
+              width: 70%;
+              margin-top: 40px;
+
+              @media screen and (max-width: 390px) {
+                width: 90%;
+                margin-top: 20px;
+              }
+            }
+          }
         }
       }
 
