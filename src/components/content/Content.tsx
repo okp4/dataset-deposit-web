@@ -53,11 +53,11 @@ export const Content = (): JSX.Element => {
       <div className="okp4-dataset-stepper-container">
         <div className="okp4-dataset-stepper-main">
           <Typography as="h1" fontWeight="bold">
-            {t('stepper:dataset-deposit')}
+            {t('stepper:dataset-deposit:title')}
           </Typography>
           <div className="okp4-dataset-stepper-description">
             <Typography as="h2" fontSize="small">
-              {t('stepper:dataset-description')}
+              {t('stepper:dataset-deposit:description')}
             </Typography>
           </div>
           <Stepper />
