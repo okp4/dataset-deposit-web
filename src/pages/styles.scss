@@ -27,6 +27,56 @@ body {
       background-repeat: no-repeat;
       align-items: center;
 
+      .okp4-dataset-stepper-container {
+        max-width: 900px;
+        margin: 0 60px;
+
+        .okp4-dataset-stepper-main {
+          display: flex;
+          flex-direction: column;
+          height: 650px;
+          width: 100%;
+          min-width: 280px;
+          margin-bottom: 50px;
+
+          @media screen and (max-height: 920px) {
+            max-width: 850px;
+            height: 520px;
+            margin-bottom: 30px;
+          }
+
+          @media screen and (max-width: 770px) {
+            height: 680px;
+            margin-bottom: 30px;
+          }
+
+          @media screen and (max-width: 480px) {
+            height: 650px;
+            margin-bottom: 10px;
+          }
+
+          @media screen and (max-width: 390px) {
+            height: 570px;
+          }
+
+          > h1 {
+            margin-bottom: 10px;
+          }
+
+          .okp4-dataset-stepper-description {
+            margin-bottom: 25px;
+
+            @media screen and (max-width: 770px) {
+              margin-bottom: 15px;
+            }
+
+            @media screen and (max-width: 480px) {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
       .okp4-brand-link {
         text-decoration: unset;
         color: inherit;
