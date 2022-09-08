@@ -127,6 +127,22 @@ body {
               }
             }
           }
+
+          .okp4-summary-step-main {
+            width: 70%;
+            margin: auto;
+            max-height: max-content;
+            display: grid;
+            gap: 25px;
+
+            .okp4-summary-step-field {
+              display: grid;
+              @media screen and (min-width: 770px) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+              }
+            }
+          }
         }
       }
 

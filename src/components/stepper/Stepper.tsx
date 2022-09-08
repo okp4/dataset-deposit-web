@@ -5,6 +5,7 @@ import { DataSpaceStep } from '../dataSpaceStep/DataSpaceStep'
 import { UploadStep } from '../uploadStep/UploadStep'
 import type { Metadata } from '../metadataStep/MetadataStep'
 import { MetadataStep } from '../metadataStep/MetadataStep'
+import { SummaryStep } from '../sumamryStep/SummaryStep'
 
 // eslint-disable-next-line max-lines-per-function
 export const Stepper = (): JSX.Element => {
@@ -59,7 +60,7 @@ export const Stepper = (): JSX.Element => {
     },
     {
       label: t('stepper:dataset-deposit:steps:summary:title'),
-      status: 'disabled'
+      content: <SummaryStep metadata={metadata} />
     },
     {
       label: t('stepper:dataset-deposit:steps:confirmation:title'),
