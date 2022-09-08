@@ -110,6 +110,23 @@ body {
             margin: auto;
             display: flex;
           }
+
+          .okp4-metadata-step-main {
+            width: 100%;
+            max-height: max-content;
+            display: flex;
+            flex-direction: column;
+            .okp4-metadata-step-container {
+              display: grid;
+              gap: 5px;
+              padding: 5px;
+              align-self: center;
+              width: 70%;
+              @media screen and (max-width: 480px) {
+                width: 100%;
+              }
+            }
+          }
         }
       }
 
