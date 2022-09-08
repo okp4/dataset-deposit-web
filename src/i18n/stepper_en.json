@@ -27,5 +27,23 @@
         "title": "Confirmation"
       }
     }
+  },
+  "metadata": {
+    "title": "Metadata",
+    "form": {
+      "dataset-title": "Dataset title",
+      "author": "Author",
+      "creator": "Creator",
+      "description": "Description",
+      "category": "Category",
+      "spatial-coverage": "Spatial coverage",
+      "licence": "Licence"
+    }
+  },
+  "summary": {
+    "title": "Summary"
+  },
+  "confirmation": {
+    "title": "Confirmation"
   }
 }
