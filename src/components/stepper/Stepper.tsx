@@ -1,7 +1,8 @@
 import { Stepper as DataSetStepper, useTranslation } from '@okp4/ui'
 import type { SelectValue, Step, UseState, UseTranslationResponse } from '@okp4/ui'
-import { DataSpaceStep } from '../dataSpaceStep/DataSpaceStep'
 import { useState } from 'react'
+import { DataSpaceStep } from '../dataSpaceStep/DataSpaceStep'
+import { UploadStep } from '../uploadStep/UploadStep'
 
 export const Stepper = (): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
@@ -28,7 +29,7 @@ export const Stepper = (): JSX.Element => {
     },
     {
       label: t('stepper:dataset-deposit:steps:upload:title'),
-      status: 'uncompleted'
+      content: <UploadStep />
     },
     {
       label: t('stepper:dataset-deposit:steps:metadata:title'),
