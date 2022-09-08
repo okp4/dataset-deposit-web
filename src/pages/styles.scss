@@ -20,21 +20,27 @@ body {
     background: themed('header-background');
 
     .okp4-dataset-deposit-content {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       background-repeat: no-repeat;
-      align-items: center;
+      min-height: 100%;
+      display: grid;
+      gap: 10px;
+      grid-template-rows: auto;
+
+      .okp4-dataset-deposit-header {
+        width: 100%;
+      }
 
       .okp4-dataset-stepper-container {
         max-width: 1000px;
-        margin: 0 60px;
+        margin: 0 auto;
+        padding: 0 60px;
+        align-self: flex-start;
+        max-height: max-content;
+        overflow: auto;
 
         .okp4-dataset-stepper-main {
           display: flex;
           flex-direction: column;
-          height: 650px;
           width: 100%;
           min-width: 280px;
           margin-bottom: 50px;
@@ -42,11 +48,21 @@ body {
           @media screen and (max-height: 920px) {
             max-width: 850px;
             height: 520px;
-            margin-bottom: 35px;
+            margin-bottom: 150px;
           }
+
+          @media screen and (max-width: 770px) {
+            height: 680px;
+            margin-bottom: 30px;
+          }
+
+          @media screen and (max-width: 480px) {
+            height: 650px;
+            margin-bottom: 10px;
+          }
+
           @media screen and (max-width: 390px) {
             height: 570px;
-            margin-bottom: 30px;
           }
 
           > h1 {
@@ -92,9 +108,14 @@ body {
         }
       }
 
-      .okp4-brand-link {
-        text-decoration: unset;
-        color: inherit;
+      .okp4-dataset-deposit-footer {
+        width: 100%;
+        align-self: flex-end;
+
+        .okp4-brand-link {
+          text-decoration: unset;
+          color: inherit;
+        }
       }
     }
   }
