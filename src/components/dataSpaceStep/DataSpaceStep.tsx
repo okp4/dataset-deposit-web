@@ -18,7 +18,11 @@ export const DataSpaceStep = ({
 
   const isInvalidStep = hasError && !dataSpace
   const options: SelectOption[] = [
-    { label: 'Rhizome', value: 'Rhizome', group: t('stepper:dataspace:public') }
+    {
+      label: 'Rhizome',
+      value: 'Rhizome',
+      group: t('stepper:dataset-deposit:steps:dataspace:public')
+    }
   ]
 
   const handleDataSpaceSelection = useCallback(
@@ -32,16 +36,20 @@ export const DataSpaceStep = ({
   return (
     <div className="okp4-dataspace-step-main">
       <Typography as="div" fontSize="small">
-        <div className="okp4-dataspace-step-description">{t('stepper:dataspace:description')}</div>
+        <div className="okp4-dataspace-step-description">
+          {t('stepper:dataset-deposit:steps:dataspace:description')}
+        </div>
       </Typography>
       <div className="okp4-dataspace-select-container">
         <Select
           fullWidth
           hasError={isInvalidStep}
-          helperText={isInvalidStep ? t('stepper:dataspace:not-selected') : ''}
+          helperText={
+            isInvalidStep ? t('stepper:dataset-deposit:steps:dataspace:not-selected') : ''
+          }
           onChange={handleDataSpaceSelection}
           options={options}
-          placeholder={t('stepper:dataspace:title')}
+          placeholder={t('stepper:dataset-deposit:steps:dataspace:title')}
           value={dataSpace}
         />
       </div>

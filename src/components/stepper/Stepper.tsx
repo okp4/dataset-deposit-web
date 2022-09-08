@@ -15,7 +15,7 @@ export const Stepper = (): JSX.Element => {
 
   const steps: Step[] = [
     {
-      label: t('stepper:dataspace:title'),
+      label: t('stepper:dataset-deposit:steps:dataspace:title'),
       onValidate: checkDataSpaceSelection,
       status: 'active',
       content: (
@@ -27,19 +27,19 @@ export const Stepper = (): JSX.Element => {
       )
     },
     {
-      label: t('stepper:upload:title'),
+      label: t('stepper:dataset-deposit:steps:upload:title'),
       status: 'uncompleted'
     },
     {
-      label: t('stepper:metadata:title'),
+      label: t('stepper:dataset-deposit:steps:metadata:title'),
       status: 'disabled'
     },
     {
-      label: t('stepper:summary:title'),
+      label: t('stepper:dataset-deposit:steps:summary:title'),
       status: 'disabled'
     },
     {
-      label: t('stepper:confirmation:title'),
+      label: t('stepper:dataset-deposit:steps:confirmation:title'),
       status: 'disabled'
     }
   ]
