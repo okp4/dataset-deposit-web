@@ -41,7 +41,14 @@
     }
   },
   "summary": {
-    "title": "Résumé"
+    "title": "Résumé",
+    "dataset": "Dataset",
+    "author": "Auteur",
+    "creator": "Créateur",
+    "description": "Description",
+    "category": "Catégorie",
+    "spatial-coverage": "Couverture spatiale",
+    "licence": "Licence"
   },
   "confirmation": {
     "title": "Confirmation"
