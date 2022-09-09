@@ -28,7 +28,7 @@ body {
       align-items: center;
 
       .okp4-dataset-stepper-container {
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 60px;
 
         .okp4-dataset-stepper-main {
@@ -42,21 +42,11 @@ body {
           @media screen and (max-height: 920px) {
             max-width: 850px;
             height: 520px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
           }
-
-          @media screen and (max-width: 770px) {
-            height: 680px;
-            margin-bottom: 30px;
-          }
-
-          @media screen and (max-width: 480px) {
-            height: 650px;
-            margin-bottom: 10px;
-          }
-
           @media screen and (max-width: 390px) {
             height: 570px;
+            margin-bottom: 30px;
           }
 
           > h1 {
@@ -66,12 +56,37 @@ body {
           .okp4-dataset-stepper-description {
             margin-bottom: 25px;
 
+            @media screen and (max-height: 920px) {
+              margin-bottom: 10px;
+            }
+
             @media screen and (max-width: 770px) {
               margin-bottom: 15px;
             }
 
             @media screen and (max-width: 480px) {
               margin-bottom: 0;
+            }
+          }
+
+          .okp4-dataspace-step-main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .okp4-dataspace-step-description {
+              white-space: pre-line;
+            }
+
+            .okp4-dataspace-select-container {
+              align-self: center;
+              width: 70%;
+              margin-top: 40px;
+
+              @media screen and (max-width: 390px) {
+                width: 90%;
+                margin-top: 20px;
+              }
             }
           }
         }

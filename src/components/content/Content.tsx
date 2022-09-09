@@ -22,9 +22,9 @@ const languages = [
 
 const Okp4Link = ({ label }: FooterLinkProps): JSX.Element => {
   return (
-    <Typography as="p" color="highlighted-text" fontSize="x-small" fontWeight="xlight" noWrap>
+    <Typography as="p" color="invariant-text" fontSize="x-small" fontWeight="xlight" noWrap>
       {`${label} `}
-      <Typography color="highlighted-text" fontSize="x-small" fontWeight="bold">
+      <Typography color="invariant-text" fontSize="x-small" fontWeight="bold">
         <a
           className="okp4-brand-link"
           href="https://okp4.network/"
@@ -53,11 +53,11 @@ export const Content = (): JSX.Element => {
       <div className="okp4-dataset-stepper-container">
         <div className="okp4-dataset-stepper-main">
           <Typography as="h1" fontWeight="bold">
-            {t('stepper:dataset-deposit')}
+            {t('stepper:dataset-deposit:title')}
           </Typography>
           <div className="okp4-dataset-stepper-description">
             <Typography as="h2" fontSize="small">
-              {t('stepper:dataset-description')}
+              {t('stepper:dataset-deposit:description')}
             </Typography>
           </div>
           <Stepper />

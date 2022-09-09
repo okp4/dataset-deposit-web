@@ -1,9 +1,27 @@
 {
-    "dataset-deposit": "Dépôt de données",
-    "dataset-description":"Référencez et décrivez les caractéristiques de votre jeu de données pour le rendre plus facile à découvrir et susciter l'intérêt des autres participants du Data Space !",
-    "dataspace": "Data Space",
-    "upload": "Téléchargez vos fichiers",
-    "metadata": "Metadonnées",
-    "summary": "Résumé",
-    "confirmation": "Confirmation"
+    "dataset-deposit": {
+        "title": "Dépôt de données",
+        "description":"Référencez et décrivez les caractéristiques de votre jeu de données pour le rendre plus facile à découvrir et susciter l'intérêt des autres participants du Data Space !",
+        "steps": {
+            "dataspace": {
+                "title":"Data Space",
+                "description": "Votre jeu de données sera indexé par le protocole et ajouté à un Data Space.\n Veuillez choisir le Data Space dans lequel nous devons ajouter vos données.\n Si vous avez besoin de créer un nouveau Data Space, vous pouvez retourner sur le portail OKP4.",
+                "not-selected": "Merci de sélectionner un Data Space.",
+                "public": "Public",
+                "private": "Privé"
+            },
+            "upload": {
+                "title":  "Téléchargez vos fichiers"
+            },
+            "metadata": {
+                "title": "Metadonnées"
+            },    
+            "summary": {
+                "title": "Résumé"
+            },    
+            "confirmation": {
+                "title": "Confirmation"
+            }
+        }
+    }
 }

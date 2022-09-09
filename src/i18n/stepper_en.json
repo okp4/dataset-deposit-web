@@ -1,9 +1,27 @@
 {
-    "dataset-deposit": "Dataset deposit",
-    "dataset-description":"Register & highlight the important features of your dataset to make it more discoverable and catch the interest of other Data Space participants!",
-    "dataspace": "Data Space",
-    "upload": "Upload your files",
-    "metadata": "Metadata",
-    "summary": "Summary",
-    "confirmation": "Confirmation"
+    "dataset-deposit": {
+        "title": "Dataset Deposit",
+        "description":"Register & highlight the important features of your dataset to make it more discoverable and catch the interest of other Data Space participants!",
+        "steps": {
+            "dataspace": {
+                "title":"Data Space",
+                "description": "Your Dataset will be indexed by the protocol and added to a Data Space.\n Please choose the Data Space where we need to add your data.\n If you need to create a new Data Space, you can go back to the OKP4 portal.",
+                "not-selected": "Please select a Data Space.",
+                "public": "Public",
+                "private": "Private"
+            },
+            "upload": {
+                "title": "Upload your files"
+            },
+            "metadata": {
+                "title": "Metadata"
+            },    
+            "summary": {
+                "title": "Summary"
+            },    
+            "confirmation": {
+                "title": "Confirmation"
+            }
+        }
+    }
 }
