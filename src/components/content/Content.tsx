@@ -49,9 +49,7 @@ export const Content = (): JSX.Element => {
       className="okp4-dataset-deposit-content"
       style={{ backgroundImage: `url(${themedImage})` }}
     >
-      <div className="okp4-dataset-deposit-header">
-        <Header firstElement={<Logo size="small" />} />
-      </div>
+      <Header firstElement={<Logo size="small" />} />
 
       <div className="okp4-dataset-stepper-container">
         <div className="okp4-dataset-stepper-main">
@@ -67,9 +65,7 @@ export const Content = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="okp4-dataset-deposit-footer">
-        <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
-      </div>
+      <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>
   )
 }
