@@ -22,19 +22,14 @@ body {
       background-repeat: no-repeat;
       min-height: 100%;
       display: grid;
-      gap: 10px;
       grid-template-rows: auto;
-
-      .okp4-dataset-deposit-header {
-        width: 100%;
-      }
+      gap: 10px;
 
       .okp4-dataset-stepper-container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 0 60px;
         align-self: flex-start;
-        max-height: max-content;
         overflow: auto;
 
         .okp4-dataset-stepper-main {
@@ -42,26 +37,14 @@ body {
           flex-direction: column;
           width: 100%;
           min-width: 280px;
+          min-height: 650px;
+          max-height: 1100px;
           margin-bottom: 50px;
 
           @media screen and (max-height: 920px) {
+            min-height: 520px;
+            max-height: 920px;
             max-width: 850px;
-            height: 520px;
-            margin-bottom: 150px;
-          }
-
-          @media screen and (max-width: 770px) {
-            height: 680px;
-            margin-bottom: 30px;
-          }
-
-          @media screen and (max-width: 480px) {
-            height: 650px;
-            margin-bottom: 10px;
-          }
-
-          @media screen and (max-width: 390px) {
-            height: 570px;
           }
 
           > h1 {
@@ -73,14 +56,6 @@ body {
 
             @media screen and (max-height: 920px) {
               margin-bottom: 10px;
-            }
-
-            @media screen and (max-width: 770px) {
-              margin-bottom: 15px;
-            }
-
-            @media screen and (max-width: 480px) {
-              margin-bottom: 0;
             }
           }
 
@@ -106,22 +81,20 @@ body {
           }
 
           .okp4-upload-step-main {
-            width: 70%;
             margin: auto;
-            display: flex;
+            display: grid;
+            gap: 20px;
           }
 
           .okp4-metadata-step-main {
-            width: 100%;
-            max-height: max-content;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            gap: 20px;
             .okp4-metadata-step-container {
+              width: 70%;
               display: grid;
               gap: 5px;
               padding: 5px;
-              align-self: center;
-              width: 70%;
+              margin: auto;
               @media screen and (max-width: 480px) {
                 width: 100%;
               }
@@ -131,7 +104,6 @@ body {
           .okp4-summary-step-main {
             width: 70%;
             margin: auto;
-            max-height: max-content;
             display: grid;
             gap: 25px;
 
@@ -146,14 +118,9 @@ body {
         }
       }
 
-      .okp4-dataset-deposit-footer {
-        width: 100%;
-        align-self: flex-end;
-
-        .okp4-brand-link {
-          text-decoration: unset;
-          color: inherit;
-        }
+      .okp4-brand-link {
+        text-decoration: unset;
+        color: inherit;
       }
     }
   }
