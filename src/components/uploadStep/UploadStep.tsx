@@ -6,6 +6,11 @@ export const UploadStep = (): JSX.Element => {
 
   return (
     <div className="okp4-upload-step-main">
+      <Typography as="div" fontSize="small">
+        <div className="okp4-dataspace-step-description">
+          {t('stepper:dataset-deposit:steps:upload:description')}
+        </div>
+      </Typography>
       <FilePicker
         acceptedFormats={['.csv', '.xls', '.xlsx']}
         description={
