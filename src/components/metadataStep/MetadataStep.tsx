@@ -1,4 +1,4 @@
-import { Select, TextField, useTranslation } from '@okp4/ui'
+import { Select, TextField, Typography, useTranslation } from '@okp4/ui'
 import type {
   UseTranslationResponse,
   SelectValue,
@@ -148,26 +148,31 @@ export const MetadataStep = ({
 
   return (
     <div className="okp4-metadata-step-main">
+      <Typography as="div" fontSize="small">
+        <div className="okp4-dataspace-step-description">
+          {t('stepper:dataset-deposit:steps:metadata:description')}
+        </div>
+      </Typography>
       <div className="okp4-metadata-step-container">
         <TextField
           fullWidth
           hasError={hasError && !state.datasetTitle}
           onChange={handleFieldChange('datasetTitleChanged')}
-          placeholder={t('stepper:metadata.form.dataset-title')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:dataset-title')}
           value={state.datasetTitle}
         />
         <TextField
           fullWidth
           hasError={hasError && !state.author}
           onChange={handleFieldChange('authorChanged')}
-          placeholder={t('stepper:metadata.form.author')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:author')}
           value={state.author}
         />
         <TextField
           fullWidth
           hasError={hasError && !state.creator}
           onChange={handleFieldChange('creatorChanged')}
-          placeholder={t('stepper:metadata.form.creator')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:creator')}
           value={state.creator}
         />
         <TextField
@@ -175,7 +180,7 @@ export const MetadataStep = ({
           multiline
           numberOfLines={10}
           onChange={handleFieldChange('descriptionChanged')}
-          placeholder={t('stepper:metadata.form.description')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:description')}
           value={state.description}
         />
         <Select
@@ -183,7 +188,7 @@ export const MetadataStep = ({
           hasError={hasError && !state.category}
           onChange={handleSelectChange('categoryChanged')}
           options={categoryOptions}
-          placeholder={t('stepper:metadata.form.category')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:category')}
           size="medium"
           value={state.category}
         />
@@ -192,7 +197,7 @@ export const MetadataStep = ({
           fullWidth
           onChange={handleSelectChange('spatialCoverageChanged')}
           options={[]}
-          placeholder={t('stepper:metadata.form.spatial-coverage')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:spatial-coverage')}
           size="medium"
           value={state.spatialCoverage}
         />
@@ -201,7 +206,7 @@ export const MetadataStep = ({
           hasError={hasError && !state.licence}
           onChange={handleSelectChange('licenceChanged')}
           options={licenceOptions}
-          placeholder={t('stepper:metadata.form.licence')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:licence')}
           size="medium"
           value={state.licence}
         />
