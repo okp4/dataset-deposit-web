@@ -948,10 +948,10 @@ eslint-module-utils@^2.7.3:
     debug "^3.2.7"
     find-up "^2.1.0"
 
-eslint-plugin-functional@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-functional/-/eslint-plugin-functional-4.3.0.tgz#8a5599531e014f1159e8a01ab6aaf78e297f7fe8"
-  integrity sha512-zXiVnGcMQveW9+1GeARaeDhIQE8AtDgUgjiPqDSfthztlxERF6LsQ9UbIrpJCpdr7F8jPhjEBNoW45gjRFTgeg==
+eslint-plugin-functional@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-functional/-/eslint-plugin-functional-4.3.2.tgz#e6afed23cb1f9fd9d110e146bbcc39c07df21b95"
+  integrity sha512-GoR36d/P8/ZG984mGXMIrnCEBSoPC/WgBCh3zH7z7xsvIlvByO4fSexzsuo1ap3HVyKIY7L+gtRohscGBsZ5Fg==
   dependencies:
     "@typescript-eslint/utils" "^5.10.2"
     deepmerge-ts "^4.0.3"
