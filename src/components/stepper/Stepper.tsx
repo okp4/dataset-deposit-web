@@ -5,33 +5,35 @@ import { DataSpaceStep } from '../dataSpaceStep/DataSpaceStep'
 import { UploadStep } from '../uploadStep/UploadStep'
 import type { Metadata } from '../metadataStep/MetadataStep'
 import { MetadataStep } from '../metadataStep/MetadataStep'
-import { SummaryStep } from '../sumamryStep/SummaryStep'
+import { SummaryStep } from '../summaryStep/SummaryStep'
 
 // eslint-disable-next-line max-lines-per-function
 export const Stepper = (): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
   const [selectedDataSpace, setSelectedDataSpace]: UseState<SelectValue> = useState<SelectValue>('')
-  const [dataSpaceStepError, setDataSpaceStepError]: UseState<boolean> = useState<boolean>(false)
+  const [isDataSpaceStepInError, setDataSpaceStepInError]: UseState<boolean> =
+    useState<boolean>(false)
   const [metadata, setMetadata]: UseState<Metadata | undefined> = useState<Metadata | undefined>(
     undefined
   )
-  const [metadataStepError, setMetadataStepError]: UseState<boolean> = useState<boolean>(false)
+  const [isMetadataStepInError, setMetadataStepInError]: UseState<boolean> =
+    useState<boolean>(false)
 
   const checkDataSpaceSelection = (): boolean => {
-    setDataSpaceStepError(!selectedDataSpace)
+    setDataSpaceStepInError(!selectedDataSpace)
     return !!selectedDataSpace
   }
 
   const checkMetadata = (): boolean => {
-    const mandatoryMetadata =
+    const isEachMandatoryFieldFilledIn =
       !!metadata &&
-      truthy(metadata.datasetTitle) &&
+      truthy(metadata.title) &&
       truthy(metadata.author) &&
       truthy(metadata.creator) &&
       truthy(metadata.category) &&
       truthy(metadata.licence)
-    setMetadataStepError(!mandatoryMetadata)
-    return mandatoryMetadata
+    setMetadataStepInError(!isEachMandatoryFieldFilledIn)
+    return isEachMandatoryFieldFilledIn
   }
 
   const steps: Step[] = [
@@ -41,7 +43,7 @@ export const Stepper = (): JSX.Element => {
       status: 'active',
       content: (
         <DataSpaceStep
-          hasError={dataSpaceStepError}
+          hasError={isDataSpaceStepInError}
           onDataSpaceChange={setSelectedDataSpace}
           selectedDataSpace={selectedDataSpace}
         />
@@ -54,7 +56,7 @@ export const Stepper = (): JSX.Element => {
     {
       label: t('stepper:dataset-deposit:steps:metadata:title'),
       content: (
-        <MetadataStep hasError={metadataStepError} metadata={metadata} onChange={setMetadata} />
+        <MetadataStep hasError={isMetadataStepInError} metadata={metadata} onChange={setMetadata} />
       ),
       onValidate: checkMetadata
     },
