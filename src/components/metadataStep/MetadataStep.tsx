@@ -7,20 +7,20 @@ import type {
   UseReducer
 } from '@okp4/ui'
 import type { ChangeEvent } from 'react'
-import { useCallback, useReducer, useEffect } from 'react'
+import { useCallback, useReducer, useEffect, useMemo } from 'react'
 
-export type Metadata = {
-  datasetTitle: string
+export type Metadata = DeepReadonly<{
+  title: string
   author: string
   creator: string
   description: string
-  category: string | readonly string[]
-  spatialCoverage: string | readonly string[]
-  licence: string | readonly string[]
-}
+  category: string | string[]
+  spatialCoverage: string | string[]
+  licence: string | string[]
+}>
 
 const initialState: Metadata = {
-  datasetTitle: '',
+  title: '',
   author: '',
   creator: '',
   description: '',
@@ -30,7 +30,7 @@ const initialState: Metadata = {
 }
 
 type TextFieldActionType =
-  | 'datasetTitleChanged'
+  | 'titleChanged'
   | 'authorChanged'
   | 'creatorChanged'
   | 'descriptionChanged'
@@ -39,15 +39,12 @@ type SelectActionType = 'categoryChanged' | 'spatialCoverageChanged' | 'licenceC
 type SelectAction = { type: SelectActionType; payload: string | string[] }
 type StepAction = TextFieldAction | SelectAction
 
-const reducer = (
-  state: DeepReadonly<Metadata>,
-  action: DeepReadonly<StepAction>
-): DeepReadonly<Metadata> => {
+const reducer = (state: Metadata, action: DeepReadonly<StepAction>): Metadata => {
   switch (action.type) {
-    case 'datasetTitleChanged':
+    case 'titleChanged':
       return {
         ...state,
-        datasetTitle: action.payload
+        title: action.payload
       }
     case 'authorChanged':
       return {
@@ -84,29 +81,6 @@ const reducer = (
   }
 }
 
-const categoryOptions: SelectOption[] = [
-  {
-    label: 'Agriculture, environment and forestry',
-    value: 'Agriculture, environment and forestry'
-  },
-  { label: 'Biology, geology, and chemistry', value: 'Biology, geology, and chemistry' },
-  { label: 'Industry, mobility, and engineering', value: 'Industry, mobility, and engineering' },
-  { label: 'Logistics and eCommerce', value: 'Logistics and eCommerce' },
-  { label: 'DeFi and Crypto', value: 'DeFi and Crypto' },
-  { label: 'Healthcare', value: 'Healthcare' },
-  { label: 'Business and purchase', value: 'Business and purchase' },
-  { label: 'Marketing and Customer Behavior', value: 'Marketing and Customer Behavior' },
-  { label: 'Energy', value: 'Energy' },
-  { label: 'Other', value: 'Other' }
-]
-
-const licenceOptions: SelectOption[] = [
-  { label: 'Etalab 2.0', value: 'Etalab 2.0' },
-  { label: 'ODbL-1.0', value: 'ODbL-1.0' },
-  { label: 'Other Open access data', value: 'Other Open access data' },
-  { label: 'Other Private access data', value: 'Other Private access data' }
-]
-
 type MetadataStepProps = {
   readonly metadata?: Metadata
   readonly hasError: boolean
@@ -124,6 +98,81 @@ export const MetadataStep = ({
   const [state, dispatch]: UseReducer<Metadata, DeepReadonly<StepAction>> = useReducer(
     reducer,
     metadata ?? initialState
+  )
+
+  const categoryOptions: SelectOption[] = useMemo(
+    () => [
+      {
+        label: t(
+          'stepper:dataset-deposit:steps:metadata:category-options:agriculture-environment-forestry'
+        ),
+        value: 'agriculture-environment-forestry'
+      },
+      {
+        label: t(
+          'stepper:dataset-deposit:steps:metadata:category-options:biology-geology-chemistry'
+        ),
+        value: 'biology-geology-chemistry'
+      },
+      {
+        label: t(
+          'stepper:dataset-deposit:steps:metadata:category-options:industry-mobility-engineering'
+        ),
+        value: 'industry-mobility-engineering'
+      },
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:category-options:logistics-ecommerce'),
+        value: 'logistics-eCommerce'
+      },
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:category-options:defi-crypto'),
+        value: 'defi-crypto'
+      },
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:category-options:healthcare'),
+        value: 'healthcare'
+      },
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:category-options:business-purchase'),
+        value: 'business-purchase'
+      },
+      {
+        label: t(
+          'stepper:dataset-deposit:steps:metadata:category-options:marketing-customer-behavior'
+        ),
+        value: 'marketing-customer-behavior'
+      },
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:category-options:energy'),
+        value: 'energy'
+      },
+      { label: t('stepper:dataset-deposit:steps:metadata:category-options:other'), value: 'other' }
+    ],
+    [t]
+  )
+
+  const licenceOptions: SelectOption[] = useMemo(
+    () => [
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:licence-options:etalab-2.0'),
+        value: 'etalab-2.0'
+      },
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:licence-options:odbl-1.0'),
+        value: 'odbl-1.0'
+      },
+      {
+        label: t('stepper:dataset-deposit:steps:metadata:licence-options:other-open-access-data'),
+        value: 'other-open-access-data'
+      },
+      {
+        label: t(
+          'stepper:dataset-deposit:steps:metadata:licence-options:other-private-access-data'
+        ),
+        value: 'other-private-access-data'
+      }
+    ],
+    [t]
   )
 
   const handleFieldChange = useCallback(
@@ -156,10 +205,10 @@ export const MetadataStep = ({
       <div className="okp4-metadata-step-container">
         <TextField
           fullWidth
-          hasError={hasError && !state.datasetTitle}
-          onChange={handleFieldChange('datasetTitleChanged')}
-          placeholder={t('stepper:dataset-deposit:steps:metadata:form:dataset-title')}
-          value={state.datasetTitle}
+          hasError={hasError && !state.title}
+          onChange={handleFieldChange('titleChanged')}
+          placeholder={t('stepper:dataset-deposit:steps:metadata:form:title')}
+          value={state.title}
         />
         <TextField
           fullWidth

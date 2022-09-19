@@ -14,7 +14,7 @@
         "title": "Téléchargez vos fichiers",
         "description": "Téléchargez les fichiers liés à votre Data Space par glisser-déposer ou parcourez votre système de fichiers.",
         "file-picker": {
-          "label": "Déposez vos fichiers ici, ou sélectionner les",
+          "label": "Déposez vos fichiers ici, ou sélectionnez les",
           "description": "Types de fichiers acceptés : CSV, XLS, XLSX."
         }
       },
@@ -22,27 +22,36 @@
         "title": "Metadonnées",
         "description": "Les métadonnées permettent de décrire formellement votre jeu de données sur la forme et le contenu.\nVeillez à fournir des informations claires et précises sur les métadonnées afin que votre jeu de données soit facilement retrouvable et utilisable par d'autres utilisateurs. Plus vous décrirez votre jeu de données, plus il devrait susciter l'intérêt des consommateurs de données.",
         "form": {
-          "dataset-title": "Titre du dataset",
+          "title": "Titre du dataset",
           "author": "Auteur",
           "creator": "Créateur",
           "description": "Description",
           "category": "Catégorie",
           "spatial-coverage": "Couverture spatiale",
           "licence": "Licence"
+        },
+        "category-options": {
+          "agriculture-environment-forestry": "Agriculture, environment et foresterie",
+          "biology-geology-chemistry": "Biologie, géologie, et chimie",
+          "industry-mobility-engineering": "Industrie, mobilité, and ingénieurie",
+          "logistics-ecommerce": "Logistique et e-commerce",
+          "defi-crypto": "DeFi et Crypto",
+          "healthcare": "Santé",
+          "business-purchase": "Business et achats",
+          "marketing-customer-behavior": "Marketing comportement client",
+          "energy": "Energie",
+          "other": "Autre"
+        },
+        "licence-options": {
+          "etalab-2.0": "Etalab 2.0",
+          "odbl-1.0": "ODbL-1.0",
+          "other-open-access-data": "Autres données en libre accès",
+          "other-private-access-data": "Autres données en accès privé"
         }
       },
       "summary": {
         "title": "Résumé",
-        "description": "Veuillez vérifier les informations relatives à votre ensemble de données avant la validation.\nVous pouvez toujours revenir aux étapes précédentes si quelque chose doit être modifié.",
-        "form": {
-          "dataset": "Dataset",
-          "author": "Auteur",
-          "creator": "Créateur",
-          "description": "Description",
-          "category": "Catégorie",
-          "spatial-coverage": "Couverture spatiale",
-          "licence": "Licence"
-        }
+        "description": "Veuillez vérifier les informations relatives à votre ensemble de données avant la validation.\nVous pouvez toujours revenir aux étapes précédentes si quelque chose doit être modifié."
       },
       "confirmation": {
         "title": "Confirmation"
