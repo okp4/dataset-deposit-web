@@ -10,8 +10,8 @@
         "public": "Public",
         "private": "Private"
       },
-      "upload": {
-        "title": "Upload your files",
+      "file-selection": {
+        "title": "File selection",
         "description": "Upload the files related to your Dataset by Drag & Drop or browse your file system.",
         "file-picker": {
           "label": "Drop your files here, or browse.",
@@ -49,8 +49,8 @@
           "other-private-access-data": "Other Private access data"
         }
       },
-      "summary": {
-        "title": "Summary",
+      "dataset-upload": {
+        "title": "Dataset upload",
         "description": "Please check the information related to the dataset before validation.\nYou can always go back to previous steps if something needs to be edited."
       },
       "confirmation": {

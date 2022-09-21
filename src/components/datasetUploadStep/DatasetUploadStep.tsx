@@ -2,14 +2,14 @@ import { Typography, useTranslation } from '@okp4/ui'
 import type { UseTranslationResponse, DeepReadonly } from '@okp4/ui'
 import type { Metadata } from '../metadataStep/MetadataStep'
 
-type SummaryStepProps = {
+type DatasetUploadProps = {
   readonly metadata?: Metadata
 }
 
-export const SummaryStep = ({ metadata }: DeepReadonly<SummaryStepProps>): JSX.Element => {
+export const DatasetUploadStep = ({ metadata }: DeepReadonly<DatasetUploadProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
 
-  const SummaryStepField = ({
+  const SummaryField = ({
     label,
     value
   }: DeepReadonly<{
@@ -28,16 +28,16 @@ export const SummaryStep = ({ metadata }: DeepReadonly<SummaryStepProps>): JSX.E
     <div className="okp4-summary-step-main">
       <div className="okp4-dataspace-step-description">
         <Typography fontSize="small">
-          {t('stepper:dataset-deposit:steps:summary:description')}
+          {t('stepper:dataset-deposit:steps:file-selection:description')}
         </Typography>
       </div>
-      <SummaryStepField label="title" value={metadata?.title} />
-      <SummaryStepField label="author" value={metadata?.author} />
-      <SummaryStepField label="creator" value={metadata?.creator} />
-      <SummaryStepField label="description" value={metadata?.description} />
-      <SummaryStepField label="category" value={`${metadata?.category}`} />
-      <SummaryStepField label="spatial-coverage" value={`${metadata?.spatialCoverage}`} />
-      <SummaryStepField label="licence" value={`${metadata?.licence}`} />
+      <SummaryField label="title" value={metadata?.title} />
+      <SummaryField label="author" value={metadata?.author} />
+      <SummaryField label="creator" value={metadata?.creator} />
+      <SummaryField label="description" value={metadata?.description} />
+      <SummaryField label="category" value={`${metadata?.category}`} />
+      <SummaryField label="spatial-coverage" value={`${metadata?.spatialCoverage}`} />
+      <SummaryField label="licence" value={`${metadata?.licence}`} />
     </div>
   )
 }

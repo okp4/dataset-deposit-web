@@ -2,10 +2,10 @@ import { Stepper as DataSetStepper, truthy, useTranslation } from '@okp4/ui'
 import type { SelectValue, Step, UseState, UseTranslationResponse } from '@okp4/ui'
 import { useState } from 'react'
 import { DataSpaceStep } from '../dataSpaceStep/DataSpaceStep'
-import { UploadStep } from '../uploadStep/UploadStep'
+import { FileSelectionStep } from '../fileSelectionStep/FileSelectionStep'
 import type { Metadata } from '../metadataStep/MetadataStep'
 import { MetadataStep } from '../metadataStep/MetadataStep'
-import { SummaryStep } from '../summaryStep/SummaryStep'
+import { DatasetUploadStep } from '../datasetUploadStep/DatasetUploadStep'
 
 // eslint-disable-next-line max-lines-per-function
 export const Stepper = (): JSX.Element => {
@@ -50,8 +50,8 @@ export const Stepper = (): JSX.Element => {
       )
     },
     {
-      label: t('stepper:dataset-deposit:steps:upload:title'),
-      content: <UploadStep />
+      label: t('stepper:dataset-deposit:steps:file-selection:title'),
+      content: <FileSelectionStep />
     },
     {
       label: t('stepper:dataset-deposit:steps:metadata:title'),
@@ -61,12 +61,8 @@ export const Stepper = (): JSX.Element => {
       onValidate: checkMetadata
     },
     {
-      label: t('stepper:dataset-deposit:steps:summary:title'),
-      content: <SummaryStep metadata={metadata} />
-    },
-    {
-      label: t('stepper:dataset-deposit:steps:confirmation:title'),
-      status: 'disabled'
+      label: t('stepper:dataset-deposit:steps:dataset-upload:title'),
+      content: <DatasetUploadStep metadata={metadata} />
     }
   ]
 

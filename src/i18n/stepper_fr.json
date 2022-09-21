@@ -10,9 +10,9 @@
         "public": "Public",
         "private": "Privé"
       },
-      "upload": {
-        "title": "Téléchargez vos fichiers",
-        "description": "Téléchargez les fichiers liés à votre Data Space par glisser-déposer ou parcourez votre système de fichiers.",
+      "file-selection": {
+        "title": "Sélection des fichiers",
+        "description": "Choisissez les fichiers liés à votre Data Space par glisser-déposer ou parcourez votre système de fichiers.",
         "file-picker": {
           "label": "Déposez vos fichiers ici, ou sélectionnez les",
           "description": "Types de fichiers acceptés : CSV, XLS, XLSX."
@@ -49,12 +49,9 @@
           "other-private-access-data": "Autres données en accès privé"
         }
       },
-      "summary": {
-        "title": "Résumé",
+      "dataset-upload": {
+        "title": "Téléchargment du Dataset",
         "description": "Veuillez vérifier les informations relatives à votre ensemble de données avant la validation.\nVous pouvez toujours revenir aux étapes précédentes si quelque chose doit être modifié."
-      },
-      "confirmation": {
-        "title": "Confirmation"
       }
     }
   }
