@@ -51,7 +51,9 @@
       },
       "dataset-upload": {
         "title": "Téléchargment du Dataset",
-        "description": "Veuillez vérifier les informations relatives à votre ensemble de données avant la validation.\nVous pouvez toujours revenir aux étapes précédentes si quelque chose doit être modifié."
+        "description": "Veuillez vérifier les informations relatives à votre ensemble de données avant la validation.\nVous pouvez toujours revenir aux étapes précédentes si quelque chose doit être modifié.",
+        "success": "Votre Dataset a bien été soumis!",
+        "error": "Une erreur est survenue durant le téléchargement du dataset. Veuillez réessayer ou nous contacter https://okp4.network/contact-us/ si vous avez besoin d'assistance."
       }
     }
   }

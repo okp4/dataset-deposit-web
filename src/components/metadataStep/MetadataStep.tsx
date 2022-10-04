@@ -209,6 +209,7 @@ export const MetadataStep = ({
           onChange={handleFieldChange('titleChanged')}
           placeholder={t('stepper:dataset-deposit:steps:metadata:form:title')}
           value={state.title}
+          withBorder
         />
         <TextField
           fullWidth
@@ -216,6 +217,7 @@ export const MetadataStep = ({
           onChange={handleFieldChange('authorChanged')}
           placeholder={t('stepper:dataset-deposit:steps:metadata:form:author')}
           value={state.author}
+          withBorder
         />
         <TextField
           fullWidth
@@ -223,6 +225,7 @@ export const MetadataStep = ({
           onChange={handleFieldChange('creatorChanged')}
           placeholder={t('stepper:dataset-deposit:steps:metadata:form:creator')}
           value={state.creator}
+          withBorder
         />
         <TextField
           fullWidth
@@ -231,6 +234,7 @@ export const MetadataStep = ({
           onChange={handleFieldChange('descriptionChanged')}
           placeholder={t('stepper:dataset-deposit:steps:metadata:form:description')}
           value={state.description}
+          withBorder
         />
         <Select
           fullWidth

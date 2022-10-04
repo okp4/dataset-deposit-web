@@ -101,18 +101,29 @@ body {
             }
           }
 
-          .okp4-summary-step-main {
+          .okp4-dataset-upload-step-main {
             width: 70%;
             margin: auto;
             display: grid;
             gap: 25px;
 
-            .okp4-summary-step-field {
+            .okp4-dataset-upload-step-summary-field {
               display: grid;
               @media screen and (min-width: 770px) {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 5px;
               }
+            }
+          }
+
+          .okp4-success-error-container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+
+            .okp4-success-error-content {
+              text-align: center;
+              margin: auto;
             }
           }
         }
