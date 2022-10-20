@@ -195,6 +195,14 @@ export const MetadataStep = ({
     onChange(state)
   }, [onChange, state])
 
+  const element = document.querySelector('.okp4-metadata-step-main')
+  useEffect(() => {
+    element?.scrollIntoView({
+      behavior: 'auto',
+      block: 'start'
+    })
+  }, [element])
+
   return (
     <div className="okp4-metadata-step-main">
       <Typography as="div" fontSize="small">

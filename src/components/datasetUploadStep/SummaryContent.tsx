@@ -1,13 +1,16 @@
-import { Typography, useTranslation } from '@okp4/ui'
-import type { UseTranslationResponse, DeepReadonly } from '@okp4/ui'
+import { getFiles, List, ListItem, Typography, useFileSelector, useTranslation } from '@okp4/ui'
+import type { UseTranslationResponse, DeepReadonly, FileDescriptor } from '@okp4/ui'
 import type { Metadata } from '../metadataStep/MetadataStep'
+import { useEffect } from 'react'
 
 type SummaryContentProps = {
   readonly metadata?: Metadata
 }
 
+// eslint-disable-next-line max-lines-per-function
 export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
+  const fileList: FileDescriptor[] = useFileSelector(getFiles)
 
   const SummaryField = ({
     label,
@@ -23,6 +26,16 @@ export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>):
       <Typography fontSize="small">{value}</Typography>
     </div>
   )
+
+  const FileItem = ({ id, name }: FileDescriptor): JSX.Element => <ListItem key={id} title={name} />
+
+  const element = document.querySelector('.okp4-dataset-upload-step-main')
+  useEffect(() => {
+    element?.scrollIntoView({
+      behavior: 'auto',
+      block: 'start'
+    })
+  }, [element])
 
   return (
     <div className="okp4-dataset-upload-step-main">
