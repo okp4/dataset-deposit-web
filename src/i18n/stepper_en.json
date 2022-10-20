@@ -52,12 +52,16 @@
       "dataset-upload": {
         "title": "Dataset upload",
         "description": "Please check the information related to the dataset before validation.\nYou can always go back to previous steps if something needs to be edited.",
-        "success": "Your Dataset has been successfully submitted!",
+        "success": "Your Dataset has been successfully uploaded!",
         "error": "An error has occurred while uploading the dataset. Please try again or contact us https://okp4.network/contact-us/ if you need assistance."
       },
       "confirmation": {
         "title": "Confirmation"
       }
+    },
+    "button": {
+      "submit": "Upload",
+      "reset": "New upload"
     }
   }
 }

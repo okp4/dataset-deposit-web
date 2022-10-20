@@ -59,6 +59,13 @@ body {
             }
           }
 
+          .okp4-stepper-container {
+            width: 100%;
+            @media screen and (max-height: 920px) {
+              height: 520px;
+            }
+          }
+
           .okp4-dataspace-step-main {
             width: 100%;
             display: flex;
@@ -84,6 +91,11 @@ body {
             margin: auto;
             display: grid;
             gap: 20px;
+
+            .okp4-file-selection-step-file-picker {
+              margin-left: auto;
+              margin-right: auto;
+            }
           }
 
           .okp4-metadata-step-main {

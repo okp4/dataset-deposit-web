@@ -122,7 +122,7 @@ export const Stepper = (): JSX.Element => {
   }, [dispatch, state.currentStepId, steps])
 
   const handleSubmit = useCallback(() => {
-    setContentType('upload')
+    setContentType('success')
     dispatch({
       type: 'stepperSubmitted'
     })
@@ -146,7 +146,9 @@ export const Stepper = (): JSX.Element => {
       onPrevious={handlePrevious}
       onReset={handleReset}
       onSubmit={handleSubmit}
+      resetButtonLabel={t('stepper:dataset-deposit:button:reset')}
       steps={getUpdatedSteps(steps, state)}
+      submitButtonLabel={t('stepper:dataset-deposit:button:submit')}
     />
   )
 }
