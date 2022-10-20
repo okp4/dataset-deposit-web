@@ -108,10 +108,11 @@ export const Stepper = (): JSX.Element => {
   )
 
   const handlePrevious = useCallback(() => {
+    state.currentStepId === steps.at(-1)?.id && setContentType('summary')
     dispatch({
       type: 'previousClicked'
     })
-  }, [dispatch])
+  }, [dispatch, state.currentStepId, steps])
 
   const handleNext = useCallback(() => {
     const currentStep = steps.find((step: DeepReadonly<Step>) => step.id === state.currentStepId)
