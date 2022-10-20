@@ -41,7 +41,7 @@ export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>):
     <div className="okp4-dataset-upload-step-main">
       <div className="okp4-dataspace-step-description">
         <Typography fontSize="small">
-          {t('stepper:dataset-deposit:steps:file-selection:description')}
+          {t('stepper:dataset-deposit:steps:dataset-upload:description')}
         </Typography>
       </div>
       <SummaryField label="title" value={metadata?.title} />
