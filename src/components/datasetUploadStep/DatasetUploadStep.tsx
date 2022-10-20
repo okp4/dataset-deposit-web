@@ -1,8 +1,8 @@
 import type { DeepReadonly } from '@okp4/ui'
 import type { Metadata } from '../metadataStep/MetadataStep'
+import { SuccessOrErrorContent } from './SuccessOrErrorContent'
 import { SummaryContent } from './SummaryContent'
 import { UploadContent } from './UploadContent'
-import { SuccessOrErrorContent } from './SuccessOrErrorContent'
 
 export type DatasetUploadStepContentType = 'summary' | 'upload' | 'success' | 'error'
 
