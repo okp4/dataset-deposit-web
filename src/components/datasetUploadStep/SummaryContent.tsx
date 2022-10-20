@@ -51,6 +51,7 @@ export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>):
       <SummaryField label="category" value={`${metadata?.category}`} />
       <SummaryField label="spatial-coverage" value={`${metadata?.spatialCoverage}`} />
       <SummaryField label="licence" value={`${metadata?.licence}`} />
+      <List>{fileList.reverse().map((file: FileDescriptor) => FileItem(file))}</List>
     </div>
   )
 }
