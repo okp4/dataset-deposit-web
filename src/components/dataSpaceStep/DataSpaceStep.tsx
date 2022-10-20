@@ -24,6 +24,11 @@ export const DataSpaceStep = ({
         label: 'Rhizome',
         value: 'Rhizome',
         group: t('stepper:dataset-deposit:steps:dataspace:public')
+      },
+      {
+        label: 'Know Universe',
+        value: 'Know',
+        group: t('stepper:dataset-deposit:steps:dataspace:public')
       }
     ],
     [t]
