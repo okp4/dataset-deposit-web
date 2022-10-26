@@ -7,6 +7,7 @@ import type {
   UseTranslationResponse
 } from '@okp4/ui'
 import {
+  getActiveStepId,
   getUpdatedSteps,
   removeAllFiles,
   Stepper as DataSetStepper,
@@ -105,25 +106,28 @@ export const Stepper = (): JSX.Element => {
     ]
   )
 
-  const { state, dispatch }: UseStepper = useStepper(
-    'dataspace',
-    steps.map((step: DeepReadonly<Step>) => ({ id: step.id }))
+  const { state, dispatch, error }: UseStepper = useStepper(
+    steps.map((step: DeepReadonly<Step>) => ({
+      id: step.id,
+      status: step.status ?? 'uncompleted'
+    })),
+    'dataspace'
   )
 
   const handlePrevious = useCallback(() => {
-    state.currentStepId === steps.at(-1)?.id && setContentType('summary')
+    getActiveStepId(state) === steps.at(-1)?.id && setContentType('summary')
     dispatch({
       type: 'previousClicked'
     })
-  }, [dispatch, state.currentStepId, steps])
+  }, [dispatch, state, steps])
 
   const handleNext = useCallback(() => {
-    const currentStep = steps.find((step: DeepReadonly<Step>) => step.id === state.currentStepId)
+    const currentStep = steps.find((step: DeepReadonly<Step>) => step.id === getActiveStepId(state))
     const stepCompleted = currentStep && (!currentStep.onValidate || currentStep.onValidate())
     dispatch({
       type: stepCompleted ? 'stepCompleted' : 'stepFailed'
     })
-  }, [dispatch, state.currentStepId, steps])
+  }, [dispatch, state, steps])
 
   const handleSubmit = useCallback(() => {
     setContentType('success')
@@ -138,24 +142,24 @@ export const Stepper = (): JSX.Element => {
     setMetadata(initialMetadata)
     setContentType('summary')
     dispatch({
-      type: 'stepperReset',
-      payload: {
-        initialCurrentStepId: 'dataspace',
-        initialStepsStatus: steps.map((step: DeepReadonly<Step>) => ({ id: step.id }))
-      }
+      type: 'stepperReset'
     })
-  }, [dispatch, fileDispatch, steps])
+  }, [dispatch, fileDispatch])
 
   return (
-    <DataSetStepper
-      currentStepId={state.currentStepId}
-      onNext={handleNext}
-      onPrevious={handlePrevious}
-      onReset={handleReset}
-      onSubmit={handleSubmit}
-      resetButtonLabel={t('stepper:dataset-deposit:button:reset')}
-      steps={getUpdatedSteps(steps, state)}
-      submitButtonLabel={t('stepper:dataset-deposit:button:submit')}
-    />
+    <div>
+      {!error && (
+        <DataSetStepper
+          activeStepId={getActiveStepId(state)}
+          onNext={handleNext}
+          onPrevious={handlePrevious}
+          onReset={handleReset}
+          onSubmit={handleSubmit}
+          resetButtonLabel={t('stepper:dataset-deposit:button:reset')}
+          steps={getUpdatedSteps(steps, state)}
+          submitButtonLabel={t('stepper:dataset-deposit:button:submit')}
+        />
+      )}
+    </div>
   )
 }
