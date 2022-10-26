@@ -1,25 +1,27 @@
-import {
-  getUpdatedSteps,
-  Stepper as DataSetStepper,
-  truthy,
-  useStepper,
-  useTranslation
-} from '@okp4/ui'
 import type {
+  DeepReadonly,
   SelectValue,
   Step,
   UseState,
-  UseTranslationResponse,
   UseStepper,
-  DeepReadonly
+  UseTranslationResponse
+} from '@okp4/ui'
+import {
+  getUpdatedSteps,
+  removeAllFiles,
+  Stepper as DataSetStepper,
+  truthy,
+  useFileDispatch,
+  useStepper,
+  useTranslation
 } from '@okp4/ui'
 import { useCallback, useMemo, useState } from 'react'
+import type { DatasetUploadStepContentType } from '../datasetUploadStep/DatasetUploadStep'
+import { DatasetUploadStep } from '../datasetUploadStep/DatasetUploadStep'
 import { DataSpaceStep } from '../dataSpaceStep/DataSpaceStep'
 import { FileSelectionStep } from '../fileSelectionStep/FileSelectionStep'
 import type { Metadata } from '../metadataStep/MetadataStep'
-import { MetadataStep } from '../metadataStep/MetadataStep'
-import type { DatasetUploadStepContentType } from '../datasetUploadStep/DatasetUploadStep'
-import { DatasetUploadStep } from '../datasetUploadStep/DatasetUploadStep'
+import { initialMetadata, MetadataStep } from '../metadataStep/MetadataStep'
 
 // eslint-disable-next-line max-lines-per-function
 export const Stepper = (): JSX.Element => {
@@ -27,6 +29,7 @@ export const Stepper = (): JSX.Element => {
   const [selectedDataSpace, setSelectedDataSpace]: UseState<SelectValue> = useState<SelectValue>('')
   const [isDataSpaceStepInError, setDataSpaceStepInError]: UseState<boolean> =
     useState<boolean>(false)
+  const fileDispatch = useFileDispatch()
   const [metadata, setMetadata]: UseState<Metadata | undefined> = useState<Metadata | undefined>(
     undefined
   )
@@ -130,6 +133,9 @@ export const Stepper = (): JSX.Element => {
   }, [dispatch])
 
   const handleReset = useCallback(() => {
+    setSelectedDataSpace('')
+    fileDispatch(removeAllFiles())
+    setMetadata(initialMetadata)
     setContentType('summary')
     dispatch({
       type: 'stepperReset',
@@ -138,7 +144,7 @@ export const Stepper = (): JSX.Element => {
         initialStepsStatus: steps.map((step: DeepReadonly<Step>) => ({ id: step.id }))
       }
     })
-  }, [dispatch, steps])
+  }, [dispatch, fileDispatch, steps])
 
   return (
     <DataSetStepper

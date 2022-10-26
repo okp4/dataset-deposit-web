@@ -19,7 +19,7 @@ export type Metadata = DeepReadonly<{
   licence: string | string[]
 }>
 
-const initialState: Metadata = {
+export const initialMetadata: Metadata = {
   title: '',
   author: '',
   creator: '',
@@ -97,7 +97,7 @@ export const MetadataStep = ({
 
   const [state, dispatch]: UseReducer<Metadata, DeepReadonly<StepAction>> = useReducer(
     reducer,
-    metadata ?? initialState
+    metadata ?? initialMetadata
   )
 
   const categoryOptions: SelectOption[] = useMemo(
