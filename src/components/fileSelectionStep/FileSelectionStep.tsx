@@ -1,9 +1,19 @@
-import { FilePicker, getFiles, Typography, useFileSelector, useTranslation } from '@okp4/ui'
-import type { UseTranslationResponse } from '@okp4/ui'
-import { useEffect } from 'react'
+import {
+  FilePicker,
+  getFiles,
+  Typography,
+  useBreakpoint,
+  useFileSelector,
+  useTranslation
+} from '@okp4/ui'
+import type { UseTranslationResponse, Breakpoints } from '@okp4/ui'
+import { useEffect, useMemo } from 'react'
 
 export const FileSelectionStep = (): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
+  const { isXSmall, isSmall }: Breakpoints = useBreakpoint()
+
+  const isMobile = useMemo(() => isXSmall || isSmall, [isXSmall, isSmall])
 
   const fileLength = useFileSelector(getFiles).length
 
@@ -27,10 +37,16 @@ export const FileSelectionStep = (): JSX.Element => {
           acceptedFormats={['.csv', '.xls', '.xlsx']}
           description={
             <Typography fontSize="x-small">
-              {t('stepper:dataset-deposit:steps:file-selection:file-picker:description')}
+              {t(
+                `stepper:dataset-deposit:steps:file-selection:file-picker:${
+                  isMobile && 'mobile:'
+                }description`
+              )}
             </Typography>
           }
-          label={t('stepper:dataset-deposit:steps:file-selection:file-picker:label')}
+          label={t(
+            `stepper:dataset-deposit:steps:file-selection:file-picker:${isMobile && 'mobile:'}label`
+          )}
           showClearAll
         />
       </div>

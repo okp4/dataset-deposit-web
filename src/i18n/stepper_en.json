@@ -15,7 +15,11 @@
         "description": "Upload the files related to your Dataset by Drag & Drop or browse your file system.",
         "file-picker": {
           "label": "Drop your files here, or browse.",
-          "description": "Support: CSV, XLS, XLSX."
+          "description": "Support: CSV, XLS, XLSX.",
+          "mobile": {
+            "label": "Drop files",
+            "description": "(CSV, XLS, XLSX)"
+          }
         }
       },
       "metadata": {

@@ -15,7 +15,11 @@
         "description": "Choisissez les fichiers liés à votre Data Space par glisser-déposer ou parcourez votre système de fichiers.",
         "file-picker": {
           "label": "Déposez vos fichiers ici, ou sélectionnez les",
-          "description": "Types de fichiers acceptés : CSV, XLS, XLSX."
+          "description": "Types de fichiers acceptés : CSV, XLS, XLSX.",
+          "mobile": {
+            "label": "Dépôt fichiers",
+            "description": "(CSV, XLS, XLSX)"
+          }
         }
       },
       "metadata": {
