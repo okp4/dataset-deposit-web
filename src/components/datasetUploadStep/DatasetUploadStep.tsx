@@ -8,7 +8,7 @@ export type DatasetUploadStepContentType = 'summary' | 'upload' | 'success' | 'e
 
 type DatasetUploadProps = {
   readonly contentType: DatasetUploadStepContentType
-  readonly metadata?: Metadata
+  readonly metadata: Metadata
 }
 
 export const DatasetUploadStep = ({

@@ -61,9 +61,7 @@ export const Content = (): JSX.Element => {
               {t('stepper:dataset-deposit:description')}
             </Typography>
           </div>
-          <div className="okp4-stepper-container">
-            <Stepper />
-          </div>
+          <Stepper />
         </div>
       </div>
 

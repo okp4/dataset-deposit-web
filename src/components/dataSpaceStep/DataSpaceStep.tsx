@@ -2,22 +2,23 @@ import { Select, Typography, useTranslation } from '@okp4/ui'
 import type { SelectOption, SelectValue, UseState, UseTranslationResponse } from '@okp4/ui'
 import { useCallback, useMemo, useState } from 'react'
 
-type DataSpaceStepProps = {
+type DataspaceStepProps = {
   readonly hasError: boolean
-  readonly selectedDataSpace: SelectValue
-  readonly onDataSpaceChange: (selectedDataSpace: SelectValue) => void
+  readonly selectedDataspace: SelectValue
+  readonly onChange: (selectedDataspace: SelectValue) => void
 }
 
 // eslint-disable-next-line max-lines-per-function
-export const DataSpaceStep = ({
-  onDataSpaceChange,
+export const DataspaceStep = ({
+  onChange,
   hasError,
-  selectedDataSpace
-}: DataSpaceStepProps): JSX.Element => {
-  const [dataSpace, setDataSpace]: UseState<SelectValue> = useState<SelectValue>(selectedDataSpace)
+  selectedDataspace
+}: DataspaceStepProps): JSX.Element => {
+  const [dataspace, setDataspace]: UseState<SelectValue> = useState<SelectValue>(selectedDataspace)
   const { t }: UseTranslationResponse = useTranslation()
 
-  const isInvalidStep = hasError && !dataSpace
+  const isInvalidStep = useMemo(() => hasError && !dataspace, [dataspace, hasError])
+
   const options: SelectOption[] = useMemo(
     () => [
       {
@@ -34,12 +35,12 @@ export const DataSpaceStep = ({
     [t]
   )
 
-  const handleDataSpaceSelection = useCallback(
+  const handleDataspaceSelection = useCallback(
     (value: SelectValue): void => {
-      setDataSpace(value)
-      onDataSpaceChange(value)
+      setDataspace(value)
+      onChange(value)
     },
-    [onDataSpaceChange, setDataSpace]
+    [onChange, setDataspace]
   )
 
   return (
@@ -56,10 +57,10 @@ export const DataSpaceStep = ({
           helperText={
             isInvalidStep ? t('stepper:dataset-deposit:steps:dataspace:not-selected') : ''
           }
-          onChange={handleDataSpaceSelection}
+          onChange={handleDataspaceSelection}
           options={options}
           placeholder={t('stepper:dataset-deposit:steps:dataspace:title')}
-          value={dataSpace}
+          value={dataspace}
         />
       </div>
     </div>

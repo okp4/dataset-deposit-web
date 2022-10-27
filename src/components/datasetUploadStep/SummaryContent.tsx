@@ -4,10 +4,9 @@ import type { Metadata } from '../metadataStep/MetadataStep'
 import { useEffect } from 'react'
 
 type SummaryContentProps = {
-  readonly metadata?: Metadata
+  readonly metadata: Metadata
 }
 
-// eslint-disable-next-line max-lines-per-function
 export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
   const fileList: FileDescriptor[] = useFileSelector(getFiles)
@@ -17,7 +16,7 @@ export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>):
     value
   }: DeepReadonly<{
     label: string
-    value: string | undefined
+    value: string
   }>): JSX.Element => (
     <div className="okp4-dataset-upload-step-summary-field">
       <Typography fontSize="small" fontWeight="bold">
@@ -44,13 +43,13 @@ export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>):
           {t('stepper:dataset-deposit:steps:dataset-upload:description')}
         </Typography>
       </div>
-      <SummaryField label="title" value={metadata?.title} />
-      <SummaryField label="author" value={metadata?.author} />
-      <SummaryField label="creator" value={metadata?.creator} />
-      <SummaryField label="description" value={metadata?.description} />
-      <SummaryField label="category" value={`${metadata?.category}`} />
-      <SummaryField label="spatial-coverage" value={`${metadata?.spatialCoverage}`} />
-      <SummaryField label="licence" value={`${metadata?.licence}`} />
+      <SummaryField label="title" value={metadata.title} />
+      <SummaryField label="author" value={metadata.author} />
+      <SummaryField label="creator" value={metadata.creator} />
+      <SummaryField label="description" value={metadata.description} />
+      <SummaryField label="category" value={`${metadata.category}`} />
+      <SummaryField label="spatial-coverage" value={`${metadata.spatialCoverage}`} />
+      <SummaryField label="licence" value={`${metadata.licence}`} />
       <List>{fileList.reverse().map((file: FileDescriptor) => FileItem(file))}</List>
     </div>
   )
