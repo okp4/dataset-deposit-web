@@ -1,3 +1,4 @@
+import type { Breakpoints, UseTranslationResponse } from '@okp4/ui'
 import {
   FilePicker,
   getFiles,
@@ -6,8 +7,9 @@ import {
   useFileSelector,
   useTranslation
 } from '@okp4/ui'
-import type { UseTranslationResponse, Breakpoints } from '@okp4/ui'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
+
+const AcceptedFormats = ['.csv', '.xls', '.xlsx']
 
 export const FileSelectionStep = (): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
@@ -17,11 +19,11 @@ export const FileSelectionStep = (): JSX.Element => {
 
   const fileLength = useFileSelector(getFiles).length
 
-  const element = document.querySelector('.okp4-list-main')
+  const element = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     fileLength &&
-      element?.scrollIntoView({
+      element.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'end'
       })
@@ -32,20 +34,22 @@ export const FileSelectionStep = (): JSX.Element => {
       <Typography fontSize="small">
         {t('stepper:dataset-deposit:steps:file-selection:description')}
       </Typography>
-      <div className="okp4-file-selection-step-file-picker">
+      <div className="okp4-file-selection-step-file-picker" ref={element}>
         <FilePicker
-          acceptedFormats={['.csv', '.xls', '.xlsx']}
+          acceptedFormats={AcceptedFormats}
           description={
             <Typography fontSize="x-small">
               {t(
                 `stepper:dataset-deposit:steps:file-selection:file-picker:${
-                  isMobile && 'mobile:'
+                  isMobile ? 'mobile:' : ''
                 }description`
               )}
             </Typography>
           }
           label={t(
-            `stepper:dataset-deposit:steps:file-selection:file-picker:${isMobile && 'mobile:'}label`
+            `stepper:dataset-deposit:steps:file-selection:file-picker:${
+              isMobile ? 'mobile:' : ''
+            }label`
           )}
           showClearAll
         />

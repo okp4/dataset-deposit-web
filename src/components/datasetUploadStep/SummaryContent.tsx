@@ -7,6 +7,7 @@ type SummaryContentProps = {
   readonly metadata: Metadata
 }
 
+// eslint-disable-next-line max-lines-per-function
 export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
   const fileList: FileDescriptor[] = useFileSelector(getFiles)
@@ -47,9 +48,15 @@ export const SummaryContent = ({ metadata }: DeepReadonly<SummaryContentProps>):
       <SummaryField label="author" value={metadata.author} />
       <SummaryField label="creator" value={metadata.creator} />
       <SummaryField label="description" value={metadata.description} />
-      <SummaryField label="category" value={`${metadata.category}`} />
+      <SummaryField
+        label="category"
+        value={t(`stepper:dataset-deposit:steps:metadata:category-options:${metadata.category}`)}
+      />
       <SummaryField label="spatial-coverage" value={`${metadata.spatialCoverage}`} />
-      <SummaryField label="licence" value={`${metadata.licence}`} />
+      <SummaryField
+        label="licence"
+        value={t(`stepper:dataset-deposit:steps:metadata:licence-options:${metadata.licence}`)}
+      />
       <List>{fileList.reverse().map((file: FileDescriptor) => FileItem(file))}</List>
     </div>
   )

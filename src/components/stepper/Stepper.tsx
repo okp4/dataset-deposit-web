@@ -2,7 +2,7 @@ import type {
   DeepReadonly,
   SelectValue,
   Step,
-  UseReducer,
+  UseState,
   UseStepper,
   UseTranslationResponse
 } from '@okp4/ui'
@@ -16,13 +16,13 @@ import {
   useStepper,
   useTranslation
 } from '@okp4/ui'
-import { useCallback, useMemo, useReducer } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import type { DatasetUploadStepContentType } from '../datasetUploadStep/DatasetUploadStep'
 import { DatasetUploadStep } from '../datasetUploadStep/DatasetUploadStep'
 import { DataspaceStep } from '../dataspaceStep/DataspaceStep'
 import { FileSelectionStep } from '../fileSelectionStep/FileSelectionStep'
 import type { Metadata } from '../metadataStep/MetadataStep'
-import { initialMetadata, MetadataStep } from '../metadataStep/MetadataStep'
+import { MetadataStep } from '../metadataStep/MetadataStep'
 
 type StepsState = {
   selectedDataspace: SelectValue
@@ -35,77 +35,43 @@ type StepsState = {
 const initialStepsState: StepsState = {
   selectedDataspace: '',
   isDataspaceStepInError: false,
-  metadata: initialMetadata,
+  metadata: {
+    title: '',
+    author: '',
+    creator: '',
+    description: '',
+    category: '',
+    spatialCoverage: '',
+    licence: ''
+  },
   isMetadataStepInError: false,
   datasetUploadContentType: 'summary'
-}
-
-type StepsStateAction =
-  | { type: 'dataspaceSelected'; payload: SelectValue }
-  | { type: 'dataspaceErrorChanged'; payload: boolean }
-  | { type: 'metadataChanged'; payload: Metadata }
-  | { type: 'metadataErrorChanged'; payload: boolean }
-  | { type: 'datasetUploadContentTypeChanged'; payload: DatasetUploadStepContentType }
-  | { type: 'reset' }
-
-const reducer = (
-  state: DeepReadonly<StepsState>,
-  action: DeepReadonly<StepsStateAction>
-): StepsState => {
-  switch (action.type) {
-    case 'dataspaceSelected':
-      return {
-        ...state,
-        selectedDataspace: action.payload
-      }
-    case 'dataspaceErrorChanged':
-      return {
-        ...state,
-        isDataspaceStepInError: action.payload
-      }
-    case 'metadataChanged':
-      return {
-        ...state,
-        metadata: action.payload
-      }
-    case 'metadataErrorChanged':
-      return {
-        ...state,
-        isMetadataStepInError: action.payload
-      }
-    case 'datasetUploadContentTypeChanged':
-      return {
-        ...state,
-        datasetUploadContentType: action.payload
-      }
-    case 'reset':
-      return initialStepsState
-    default:
-      return state
-  }
 }
 
 // eslint-disable-next-line max-lines-per-function
 export const Stepper = (): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
   const fileDispatch = useFileDispatch()
-  const [stepsState, stepsDispatch]: UseReducer<
-    StepsState,
-    DeepReadonly<StepsStateAction>
-  > = useReducer(reducer, initialStepsState)
+  const [stepsState, setState]: UseState<StepsState> = useState(initialStepsState)
 
-  const handleDataspaceChange = useCallback((selectedDataspace: SelectValue) => {
-    stepsDispatch({ type: 'dataspaceSelected', payload: selectedDataspace })
-  }, [])
+  const handleDataspaceChange = useCallback(
+    (selectedDataspace: SelectValue) => {
+      setState({ ...stepsState, selectedDataspace })
+    },
+    [stepsState]
+  )
 
   const checkDataspaceSelection = useCallback((): boolean => {
-    stepsDispatch({ type: 'dataspaceErrorChanged', payload: !stepsState.selectedDataspace })
+    setState({ ...stepsState, isDataspaceStepInError: !stepsState.selectedDataspace })
     return !!stepsState.selectedDataspace
-  }, [stepsState.selectedDataspace])
+  }, [stepsState])
 
-  const handleMetadataChange = useCallback((metadata: Metadata) => {
-    stepsDispatch({ type: 'metadataChanged', payload: metadata })
-  }, [])
+  const handleMetadataChange = useCallback(
+    (metadata: Metadata) => {
+      setState({ ...stepsState, metadata })
+    },
+    [stepsState]
+  )
 
   const checkMetadata = useCallback((): boolean => {
     const isEachMandatoryFieldFilledIn =
@@ -114,9 +80,9 @@ export const Stepper = (): JSX.Element => {
       truthy(stepsState.metadata.creator) &&
       truthy(stepsState.metadata.category) &&
       truthy(stepsState.metadata.licence)
-    stepsDispatch({ type: 'metadataErrorChanged', payload: !isEachMandatoryFieldFilledIn })
+    setState({ ...stepsState, isMetadataStepInError: !isEachMandatoryFieldFilledIn })
     return isEachMandatoryFieldFilledIn
-  }, [stepsState.metadata])
+  }, [stepsState])
 
   const steps: Step[] = useMemo(
     () => [
@@ -180,11 +146,11 @@ export const Stepper = (): JSX.Element => {
 
   const handlePrevious = useCallback(() => {
     getActiveStepId(state) === steps.at(-1)?.id &&
-      stepsDispatch({ type: 'datasetUploadContentTypeChanged', payload: 'summary' })
+      setState({ ...stepsState, datasetUploadContentType: 'summary' })
     dispatch({
       type: 'previousClicked'
     })
-  }, [dispatch, state, steps])
+  }, [dispatch, state, steps, stepsState])
 
   const handleNext = useCallback(() => {
     const currentStep = steps.find((step: DeepReadonly<Step>) => step.id === getActiveStepId(state))
@@ -195,14 +161,14 @@ export const Stepper = (): JSX.Element => {
   }, [dispatch, state, steps])
 
   const handleSubmit = useCallback(() => {
-    stepsDispatch({ type: 'datasetUploadContentTypeChanged', payload: 'success' })
+    setState({ ...stepsState, datasetUploadContentType: 'success' })
     dispatch({
       type: 'stepperSubmitted'
     })
-  }, [dispatch])
+  }, [dispatch, stepsState])
 
   const handleReset = useCallback(() => {
-    stepsDispatch({ type: 'reset' })
+    setState(initialStepsState)
     fileDispatch(removeAllFiles())
     dispatch({
       type: 'stepperReset'

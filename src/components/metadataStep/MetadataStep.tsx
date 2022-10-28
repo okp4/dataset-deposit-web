@@ -1,13 +1,13 @@
-import { Select, TextField, Typography, useTranslation } from '@okp4/ui'
 import type {
-  UseTranslationResponse,
-  SelectValue,
   DeepReadonly,
   SelectOption,
-  UseReducer
+  SelectValue,
+  UseState,
+  UseTranslationResponse
 } from '@okp4/ui'
+import { Select, TextField, Typography, useTranslation } from '@okp4/ui'
 import type { ChangeEvent } from 'react'
-import { useCallback, useReducer, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 export type Metadata = DeepReadonly<{
   title: string
@@ -19,70 +19,15 @@ export type Metadata = DeepReadonly<{
   licence: string | string[]
 }>
 
-export const initialMetadata: Metadata = {
-  title: '',
-  author: '',
-  creator: '',
-  description: '',
-  category: '',
-  spatialCoverage: '',
-  licence: ''
-}
-
 type TextFieldActionType =
   | 'titleChanged'
   | 'authorChanged'
   | 'creatorChanged'
   | 'descriptionChanged'
-type TextFieldAction = { type: TextFieldActionType; payload: string }
 type SelectActionType = 'categoryChanged' | 'spatialCoverageChanged' | 'licenceChanged'
-type SelectAction = { type: SelectActionType; payload: string | string[] }
-type StepAction = TextFieldAction | SelectAction
-
-const reducer = (state: Metadata, action: DeepReadonly<StepAction>): Metadata => {
-  switch (action.type) {
-    case 'titleChanged':
-      return {
-        ...state,
-        title: action.payload
-      }
-    case 'authorChanged':
-      return {
-        ...state,
-        author: action.payload
-      }
-    case 'creatorChanged':
-      return {
-        ...state,
-        creator: action.payload
-      }
-    case 'descriptionChanged':
-      return {
-        ...state,
-        description: action.payload
-      }
-    case 'categoryChanged':
-      return {
-        ...state,
-        category: action.payload
-      }
-    case 'spatialCoverageChanged':
-      return {
-        ...state,
-        spatialCoverage: action.payload
-      }
-    case 'licenceChanged':
-      return {
-        ...state,
-        licence: action.payload
-      }
-    default:
-      return state
-  }
-}
 
 type MetadataStepProps = {
-  readonly metadata?: Metadata
+  readonly metadata: Metadata
   readonly hasError: boolean
   readonly onChange: (metadata: DeepReadonly<Metadata>) => void
 }
@@ -95,10 +40,7 @@ export const MetadataStep = ({
 }: DeepReadonly<MetadataStepProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
 
-  const [state, dispatch]: UseReducer<Metadata, DeepReadonly<StepAction>> = useReducer(
-    reducer,
-    metadata ?? initialMetadata
-  )
+  const [state, setState]: UseState<Metadata> = useState<Metadata>(metadata)
 
   const categoryOptions: SelectOption[] = useMemo(
     () => [
@@ -179,32 +121,83 @@ export const MetadataStep = ({
     (type: DeepReadonly<TextFieldActionType>) =>
       // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
       (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        dispatch({ type, payload: event.target.value })
+        switch (type) {
+          case 'titleChanged':
+            {
+              const newState: Metadata = { ...state, title: event.target.value }
+              setState(newState)
+              onChange(newState)
+            }
+            break
+          case 'authorChanged':
+            {
+              const newState: Metadata = { ...state, author: event.target.value }
+              setState(newState)
+              onChange(newState)
+            }
+            break
+          case 'creatorChanged':
+            {
+              const newState: Metadata = { ...state, creator: event.target.value }
+              setState(newState)
+              onChange(newState)
+            }
+            break
+          case 'descriptionChanged':
+            {
+              const newState: Metadata = { ...state, description: event.target.value }
+              setState(newState)
+              onChange(newState)
+            }
+            break
+          default:
+            break
+        }
       },
-    []
+    [onChange, state]
   )
 
   const handleSelectChange = useCallback(
     (type: DeepReadonly<SelectActionType>) => (value: SelectValue) => {
-      dispatch({ type, payload: value })
+      switch (type) {
+        case 'categoryChanged':
+          {
+            const newState: Metadata = { ...state, category: value }
+            setState(newState)
+            onChange(newState)
+          }
+          break
+        case 'spatialCoverageChanged':
+          {
+            const newState: Metadata = { ...state, spatialCoverage: value }
+            setState(newState)
+            onChange(newState)
+          }
+          break
+        case 'licenceChanged':
+          {
+            const newState: Metadata = { ...state, licence: value }
+            setState(newState)
+            onChange(newState)
+          }
+          break
+        default:
+          break
+      }
     },
-    []
+    [onChange, state]
   )
 
+  const element = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    onChange(state)
-  }, [onChange, state])
-
-  const element = document.querySelector('.okp4-metadata-step-main')
-  useEffect(() => {
-    element?.scrollIntoView({
+    element.current?.scrollIntoView({
       behavior: 'auto',
       block: 'start'
     })
   }, [element])
 
   return (
-    <div className="okp4-metadata-step-main">
+    <div className="okp4-metadata-step-main" ref={element}>
       <Typography as="div" fontSize="small">
         <div className="okp4-dataspace-step-description">
           {t('stepper:dataset-deposit:steps:metadata:description')}
