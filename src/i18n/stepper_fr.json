@@ -1,27 +1,68 @@
 {
-    "dataset-deposit": {
-        "title": "Dépôt de données",
-        "description":"Référencez et décrivez les caractéristiques de votre jeu de données pour le rendre plus facile à découvrir et susciter l'intérêt des autres participants du Data Space !",
-        "steps": {
-            "dataspace": {
-                "title":"Data Space",
-                "description": "Votre jeu de données sera indexé par le protocole et ajouté à un Data Space.\n Veuillez choisir le Data Space dans lequel nous devons ajouter vos données.\n Si vous avez besoin de créer un nouveau Data Space, vous pouvez retourner sur le portail OKP4.",
-                "not-selected": "Merci de sélectionner un Data Space.",
-                "public": "Public",
-                "private": "Privé"
-            },
-            "upload": {
-                "title":  "Téléchargez vos fichiers"
-            },
-            "metadata": {
-                "title": "Metadonnées"
-            },    
-            "summary": {
-                "title": "Résumé"
-            },    
-            "confirmation": {
-                "title": "Confirmation"
-            }
+  "dataset-deposit": {
+    "title": "Dépôt de données",
+    "description": "Référencez et décrivez les caractéristiques de votre jeu de données pour le rendre plus facile à découvrir et susciter l'intérêt des autres participants du Data Space !",
+    "steps": {
+      "dataspace": {
+        "title": "Data Space",
+        "description": "Veuillez sélectionner un Data Space dans lequel l'ensemble des données sera référencé.\nVous pouvez également créer un nouveau Data Space à partir du portail OKP4.",
+        "not-selected": "Merci de sélectionner un Data Space.",
+        "public": "Public",
+        "private": "Privé"
+      },
+      "file-selection": {
+        "title": "Sélection des fichiers",
+        "description": "Choisissez les fichiers liés à votre Data Space par glisser-déposer ou parcourez votre système de fichiers.",
+        "file-picker": {
+          "label": "Déposez vos fichiers ici, ou sélectionnez les",
+          "description": "Types de fichiers acceptés : CSV, XLS, XLSX.",
+          "mobile": {
+            "label": "Dépôt fichiers",
+            "description": "(CSV, XLS, XLSX)"
+          }
         }
+      },
+      "metadata": {
+        "title": "Metadonnées",
+        "description": "Les métadonnées permettent de décrire formellement votre jeu de données sur la forme et le contenu.\nVeillez à fournir des informations claires et précises sur les métadonnées afin que votre jeu de données soit facilement retrouvable et utilisable par d'autres utilisateurs. Plus vous décrirez votre jeu de données, plus il devrait susciter l'intérêt des consommateurs de données.",
+        "form": {
+          "title": "Titre du dataset",
+          "author": "Auteur",
+          "creator": "Créateur",
+          "description": "Description",
+          "category": "Catégorie",
+          "spatial-coverage": "Couverture spatiale",
+          "licence": "Licence"
+        },
+        "category-options": {
+          "agriculture-environment-forestry": "Agriculture, environment et foresterie",
+          "biology-geology-chemistry": "Biologie, géologie, et chimie",
+          "industry-mobility-engineering": "Industrie, mobilité, and ingénieurie",
+          "logistics-ecommerce": "Logistique et e-commerce",
+          "defi-crypto": "DeFi et Crypto",
+          "healthcare": "Santé",
+          "business-purchase": "Business et achats",
+          "marketing-customer-behavior": "Marketing comportement client",
+          "energy": "Energie",
+          "other": "Autre"
+        },
+        "licence-options": {
+          "etalab-2.0": "Etalab 2.0",
+          "odbl-1.0": "ODbL-1.0",
+          "other-open-access-data": "Autres données en libre accès",
+          "other-private-access-data": "Autres données en accès privé"
+        }
+      },
+      "dataset-upload": {
+        "title": "Téléchargment du Dataset",
+        "description": "Veuillez vérifier les informations relatives à votre ensemble de données avant la validation.\nVous pouvez toujours revenir aux étapes précédentes si quelque chose doit être modifié.",
+        "success": "Votre Dataset a bien été téléchargé!",
+        "error": "Une erreur est survenue durant le téléchargement du dataset. Veuillez réessayer ou nous contacter https://okp4.network/contact-us/ si vous avez besoin d'assistance."
+      }
+    },
+    "button": {
+      "submit": "Télécharger",
+      "reset": "Nouveau dépôt"
     }
+  }
 }

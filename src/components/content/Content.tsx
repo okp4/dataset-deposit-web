@@ -50,6 +50,7 @@ export const Content = (): JSX.Element => {
       style={{ backgroundImage: `url(${themedImage})` }}
     >
       <Header firstElement={<Logo size="small" />} />
+
       <div className="okp4-dataset-stepper-container">
         <div className="okp4-dataset-stepper-main">
           <Typography as="h1" fontWeight="bold">
@@ -63,6 +64,7 @@ export const Content = (): JSX.Element => {
           <Stepper />
         </div>
       </div>
+
       <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>
   )

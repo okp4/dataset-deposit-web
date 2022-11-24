@@ -1,27 +1,71 @@
 {
-    "dataset-deposit": {
-        "title": "Dataset Deposit",
-        "description":"Register & highlight the important features of your dataset to make it more discoverable and catch the interest of other Data Space participants!",
-        "steps": {
-            "dataspace": {
-                "title":"Data Space",
-                "description": "Your Dataset will be indexed by the protocol and added to a Data Space.\n Please choose the Data Space where we need to add your data.\n If you need to create a new Data Space, you can go back to the OKP4 portal.",
-                "not-selected": "Please select a Data Space.",
-                "public": "Public",
-                "private": "Private"
-            },
-            "upload": {
-                "title": "Upload your files"
-            },
-            "metadata": {
-                "title": "Metadata"
-            },    
-            "summary": {
-                "title": "Summary"
-            },    
-            "confirmation": {
-                "title": "Confirmation"
-            }
+  "dataset-deposit": {
+    "title": "Dataset Deposit",
+    "description": "Register & highlight the important features of your dataset to make it more discoverable and catch the interest of other Data Space participants!",
+    "steps": {
+      "dataspace": {
+        "title": "Data Space",
+        "description": "Please select a Data Space in which the dataset will be referenced.\nYou can also create a new Data Space from the OKP4 Portal.",
+        "not-selected": "Please select a Data Space.",
+        "public": "Public",
+        "private": "Private"
+      },
+      "file-selection": {
+        "title": "File selection",
+        "description": "Upload the files related to your Dataset by Drag & Drop or browse your file system.",
+        "file-picker": {
+          "label": "Drop your files here, or browse.",
+          "description": "Support: CSV, XLS, XLSX.",
+          "mobile": {
+            "label": "Drop files",
+            "description": "(CSV, XLS, XLSX)"
+          }
         }
+      },
+      "metadata": {
+        "title": "Metadata",
+        "description": "The metadata allows to formally describe your dataset on form and content.\nBe sure to provide clear and precise metadata information so that your dataset will be easily discoverable and usable by other users. The more you describe, the more it should attract data consumer interest.",
+        "form": {
+          "title": "Dataset title",
+          "author": "Author",
+          "creator": "Creator",
+          "description": "Description",
+          "category": "Category",
+          "spatial-coverage": "Spatial coverage",
+          "licence": "Licence"
+        },
+        "category-options": {
+          "agriculture-environment-forestry": "Agriculture, environment and forestry",
+          "biology-geology-chemistry": "Biology, geology, and chemistry",
+          "industry-mobility-engineering": "Industry, mobility, and engineering",
+          "logistics-ecommerce": "Logistics and eCommerce",
+          "defi-crypto": "DeFi and Crypto",
+          "healthcare": "Healthcare",
+          "business-purchase": "Business and purchase",
+          "marketing-customer-behavior": "Marketing and Customer Behavior",
+          "energy": "Energy",
+          "other": "Other"
+        },
+        "licence-options": {
+          "etalab-2.0": "Etalab 2.0",
+          "odbl-1.0": "ODbL-1.0",
+          "other-open-access-data": "Other Open access data",
+          "other-private-access-data": "Other Private access data"
+        }
+      },
+      "dataset-upload": {
+        "title": "Dataset upload",
+        "description": "Please check the information related to the dataset before validation.\nYou can always go back to previous steps if something needs to be edited.",
+        "success": "Your Dataset has been successfully uploaded!",
+        "error": "An error has occurred while uploading the dataset. Please try again or contact us https://okp4.network/contact-us/ if you need assistance."
+      },
+      "confirmation": {
+        "title": "Confirmation"
+      }
+    },
+    "button": {
+      "submit": "Upload",
+      "reset": "New upload"
     }
+  }
 }
