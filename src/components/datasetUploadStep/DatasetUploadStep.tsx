@@ -14,12 +14,11 @@ type DatasetUploadProps = {
 export const DatasetUploadStep = ({
   contentType,
   metadata
-}: DeepReadonly<DatasetUploadProps>): JSX.Element => {
-  return contentType === 'summary' ? (
+}: DeepReadonly<DatasetUploadProps>): JSX.Element =>
+  contentType === 'summary' ? (
     <SummaryContent metadata={metadata} />
   ) : contentType === 'upload' ? (
     <UploadContent />
   ) : (
     <SuccessOrErrorContent contentType={contentType} />
   )
-}

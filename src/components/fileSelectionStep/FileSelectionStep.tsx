@@ -9,7 +9,7 @@ import {
 } from '@okp4/ui'
 import { useEffect, useMemo, useRef } from 'react'
 
-const AcceptedFormats = ['.csv', '.xls', '.xlsx']
+const acceptedFormats = ['.csv', '.xls', '.xlsx']
 
 export const FileSelectionStep = (): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
@@ -17,17 +17,17 @@ export const FileSelectionStep = (): JSX.Element => {
 
   const isMobile = useMemo(() => isXSmall || isSmall, [isXSmall, isSmall])
 
-  const fileLength = useFileSelector(getFiles).length
+  const filesLength = useFileSelector(getFiles).length
 
   const element = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    fileLength &&
+    filesLength &&
       element.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'end'
       })
-  }, [fileLength, element])
+  }, [filesLength, element])
 
   return (
     <div className="okp4-file-selection-step-main">
@@ -36,7 +36,7 @@ export const FileSelectionStep = (): JSX.Element => {
       </Typography>
       <div className="okp4-file-selection-step-file-picker" ref={element}>
         <FilePicker
-          acceptedFormats={AcceptedFormats}
+          acceptedFormats={acceptedFormats}
           description={
             <Typography fontSize="x-small">
               {t(
